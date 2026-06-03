@@ -1,0 +1,21 @@
+{
+  "name": "Moodly - Daily Mood Tracking",
+  "short_name": "Moodly",
+  "description": "A gentle mood tracking app for daily check-ins, mood calendar, and weekly insights.",
+  "id": "/",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F6F9FF",
+  "theme_color": "#6C7BFF",
+  "categories": ["health", "lifestyle", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/maskable-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": []
+}
