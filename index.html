@@ -11,7 +11,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Moodly" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <link rel="manifest" href="manifest.json" />
+  <link rel="manifest" href="./manifest.json" />
   <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
   <style>
@@ -116,7 +116,7 @@
     .install-btn{border:0;border-radius:14px;padding:10px 13px;background:linear-gradient(100deg,#6b7cff,#fa88bd);color:white;font-weight:850;box-shadow:0 10px 20px rgba(93,116,255,.18);white-space:nowrap;cursor:pointer}
     .install-btn:disabled{opacity:.65;cursor:default;background:#edf2ff;color:#6f7f9f;box-shadow:none}
     .toast{position:absolute;left:22px;right:22px;bottom:90px;background:rgba(11,34,87,.92);color:#fff;padding:13px 16px;border-radius:16px;font-size:13px;font-weight:800;text-align:center;z-index:8;opacity:0;transform:translateY(14px);transition:.22s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}
-    .modal{position:absolute;inset:0;background:rgba(9,26,67,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10;display:none;place-items:center;padding:24px}.modal.show{display:grid}.modal-card{width:100%;background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.9);border-radius:30px;box-shadow:var(--shadow);padding:24px;text-align:center}.breath-circle{width:150px;height:150px;margin:14px auto 18px;border-radius:50%;background:radial-gradient(circle,#fff 0 34%,rgba(111,131,255,.18) 35% 55%,rgba(255,138,189,.38) 56% 100%);display:grid;place-items:center;color:#2951d4;font-size:38px;animation:breathe 5s ease-in-out infinite}@keyframes breathe{0%,100%{transform:scale(.82)}50%{transform:scale(1.08)}}.modal-card h3{font-size:24px;margin-bottom:6px}.modal-card p{color:#7180a2;font-weight:650;font-size:13px;line-height:1.5}.secondary-btn{border:1px solid rgba(30,68,125,.12);background:#fff;color:#18366d;font-weight:850;border-radius:16px;height:46px;padding:0 18px;margin-top:18px;cursor:pointer}.brand-mark{display:none}
+    .modal{position:absolute;inset:0;background:rgba(9,26,67,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:10;display:none;place-items:center;padding:24px}.modal.show{display:grid}.modal-card{width:100%;background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.9);border-radius:30px;box-shadow:var(--shadow);padding:24px;text-align:center}.breath-circle{width:150px;height:150px;margin:14px auto 18px;border-radius:50%;background:radial-gradient(circle,#fff 0 34%,rgba(111,131,255,.18) 35% 55%,rgba(255,138,189,.38) 56% 100%);display:grid;place-items:center;color:#2951d4;font-size:38px;animation:breathe 5s ease-in-out infinite}@keyframes breathe{0%,100%{transform:scale(.82)}50%{transform:scale(1.08)}}.modal-card h3{font-size:24px;margin-bottom:6px}.modal-card p{color:#7180a2;font-weight:650;font-size:13px;line-height:1.5}.install-steps{text-align:left;margin:16px 0 4px;padding:14px 16px;border-radius:18px;background:rgba(246,249,255,.86);border:1px solid rgba(43,73,132,.08);color:#18366d;font-size:13px;font-weight:750;line-height:1.62}.install-steps b{color:#0c275f}.install-steps .hint{display:block;color:#7180a2;font-size:12px;font-weight:650;margin-top:6px}.secondary-btn{border:1px solid rgba(30,68,125,.12);background:#fff;color:#18366d;font-weight:850;border-radius:16px;height:46px;padding:0 18px;margin-top:18px;cursor:pointer}.brand-mark{display:none}
     @media (min-width: 860px){
       .app-shell{padding:22px}.brand-mark{display:block;position:fixed;top:28px;left:0;right:0;text-align:center;color:#0b2257}.brand-row{display:flex;align-items:center;justify-content:center;gap:14px}.brand-icon{width:62px;height:62px;border-radius:18px;background:linear-gradient(135deg,#6f83ff,#ff8abd);display:grid;place-items:center;color:white;font-size:34px;box-shadow:0 16px 36px rgba(86,101,225,.18)}.brand-title{font-size:54px;font-weight:900;letter-spacing:-.06em;line-height:1}.brand-sub{font-size:16px;margin-top:8px;font-weight:750;color:#1b3970}.brand-note{font-size:14px;margin-top:8px;color:#6b7ba0;font-weight:650}.phone{margin-top:120px}
     }
@@ -202,7 +202,7 @@
           <div class="settings-section">
             <div class="settings-title">App</div>
             <div class="card install-card">
-              <div class="install-copy"><strong>Install Moodly</strong><span>Add it to your home screen and open it like an app.</span></div>
+              <div class="install-copy"><strong>Install Moodly</strong><span>iPhone Safari: tap Share ⬆︎, then Add to Home Screen.</span></div>
               <button class="install-btn" id="installBtn">Install</button>
             </div>
           </div>
@@ -242,6 +242,7 @@
         </nav>
         <div class="toast" id="toast"></div>
         <div class="modal" id="breathModal"><div class="modal-card"><h3>Take a Breath</h3><p>Follow the circle. Inhale as it expands, exhale as it softens.</p><div class="breath-circle">⌣</div><p>给自己一分钟，慢慢回来。</p><button class="secondary-btn" id="closeBreath">Done</button></div></div>
+        <div class="modal" id="installModal"><div class="modal-card"><h3>Install Moodly</h3><p id="installIntro">Add Moodly to your phone home screen.</p><div class="install-steps" id="installSteps"></div><button class="secondary-btn" id="closeInstall">Got it</button></div></div>
       </div>
     </section>
   </main>
@@ -407,10 +408,21 @@
 
 
   function isStandalone(){ return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true; }
+  function isIOSDevice(){ return /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); }
+  function isSafari(){ return /^((?!chrome|android|crios|fxios|edgios).)*safari/i.test(navigator.userAgent); }
   function updateInstallButton(){
     const btn = $('installBtn'); if(!btn) return;
     if(isStandalone()){ btn.textContent='Installed'; btn.disabled=true; }
-    else { btn.disabled=false; btn.textContent='Install'; }
+    else { btn.disabled=false; btn.textContent = isIOSDevice() ? 'How to install' : 'Install'; }
+  }
+  function showInstallGuide(){
+    const ios = isIOSDevice();
+    const safari = isSafari();
+    $('installIntro').textContent = ios ? 'iPhone/iPad needs Safari to add a web app to the Home Screen.' : 'Add Moodly to your phone home screen.';
+    $('installSteps').innerHTML = ios
+      ? `<b>iPhone steps</b><br>1. Open this page in Safari.<br>2. Tap the Share button ⬆︎ in the Safari toolbar.<br>3. Scroll down and tap <b>Add to Home Screen</b>.<br>4. Tap <b>Add</b>.<span class="hint">${safari ? 'You are already in Safari. Use the Share button in the browser toolbar.' : 'You are not in Safari. Copy this link and open it with Safari first.'}</span>`
+      : `<b>Android steps</b><br>1. Open this page in Chrome.<br>2. Tap the browser menu ⋮.<br>3. Tap <b>Install app</b> or <b>Add to Home screen</b>.<br>4. Confirm install.`;
+    $('installModal').classList.add('show');
   }
   async function installApp(){
     if(isStandalone()){ showToast('Moodly is already installed'); updateInstallButton(); return; }
@@ -422,8 +434,7 @@
       showToast(choice.outcome === 'accepted' ? 'Install started' : 'Install dismissed');
       return;
     }
-    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-    showToast(isIOS ? 'Safari: Share → Add to Home Screen' : 'Use browser menu → Install app');
+    showInstallGuide();
   }
   window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
@@ -435,6 +446,7 @@
     updateInstallButton();
     showToast('Moodly installed');
   });
+  window.addEventListener('pageshow', updateInstallButton);
   if('serviceWorker' in navigator && location.protocol !== 'file:'){
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./service-worker.js').catch(() => {});
@@ -455,6 +467,8 @@
     $('breathBtn').addEventListener('click',()=>$('breathModal').classList.add('show'));
     $('closeBreath').addEventListener('click',()=>$('breathModal').classList.remove('show'));
     $('breathModal').addEventListener('click',e=>{if(e.target.id==='breathModal') $('breathModal').classList.remove('show');});
+    $('closeInstall').addEventListener('click',()=>$('installModal').classList.remove('show'));
+    $('installModal').addEventListener('click',e=>{if(e.target.id==='installModal') $('installModal').classList.remove('show');});
   }
 
   updateInstallButton(); seedDemo(); renderTodayDate(); loadToday(); bind(); renderCalendar(); renderInsights();
