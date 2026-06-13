@@ -1,4 +1,4 @@
-const CACHE_NAME = 'moodly-pwa-v3-lang';
+const CACHE_NAME = 'moodly-pwa-final-v3-lang';
 const APP_SHELL = [
   './',
   './index.html',

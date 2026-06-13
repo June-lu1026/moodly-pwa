@@ -1,41 +1,47 @@
-# Moodly PWA - fixed mobile install build
+# Moodly PWA 安装包
 
-This build is optimized for installing Moodly on phones.
+这是一个可直接部署到 GitHub + Render 的 Moodly PWA 包。
 
-## What was fixed
+## 包含内容
 
-- Safer relative `manifest.json` paths for Render / Netlify / Vercel deployment.
-- Updated `start_url`, `scope`, and app `id` so the PWA works even when hosted from a non-root path.
-- Improved service worker cache version and same-origin fetch handling.
-- Added an in-app install guide for iPhone, because iOS Safari does not support the Android/Chrome install prompt.
-- The Settings install button now explains: Safari → Share → Add to Home Screen.
+- `index.html`：Moodly 主应用，包含中英切换、深色模式预览、本地心情记录、Journal、Insights、Settings。
+- `manifest.json`：PWA 安装配置。
+- `service-worker.js`：离线缓存与 PWA 支持。
+- `icons/`：App 图标。
 
-## Deploy
+## GitHub 重新上传
 
-Deploy the contents of this `moodly-webapp` folder as a static site.
+1. 解压本 zip。
+2. 进入你的 GitHub 仓库。
+3. 删除旧的 `index.html`、`manifest.json`、`service-worker.js`、`icons/`。
+4. 上传解压后的全部文件。
+5. Commit changes。
 
-### Render
+## Render 重新部署
 
-- Service type: Static Site
-- Build command: `echo "No build needed"`
-- Publish directory: `.`
+1. 打开 Render Dashboard。
+2. 进入你的 Moodly Static Site。
+3. 点击 `Manual Deploy`。
+4. 选择 `Deploy latest commit`。
 
-### Netlify / Vercel
+## 手机安装
 
-- Build command: empty or `echo "No build needed"`
-- Output / publish directory: `.`
+### iPhone
 
-## Install on phone
-
-### iPhone / iPad
-
-1. Open the deployed HTTPS URL in Safari.
-2. Tap the Share button.
-3. Tap `Add to Home Screen`.
-4. Tap `Add`.
+1. 用 Safari 打开 Render 网址。
+2. 点击分享按钮。
+3. 选择“添加到主屏幕”。
 
 ### Android
 
-1. Open the deployed HTTPS URL in Chrome.
-2. Tap the menu button.
-3. Tap `Install app` or `Add to Home screen`.
+1. 用 Chrome 打开 Render 网址。
+2. 点击右上角菜单。
+3. 选择“安装应用”或“添加到主屏幕”。
+
+## 注意
+
+如果更新后手机还是旧界面，请访问：
+
+`https://你的网址.onrender.com/?v=3`
+
+这样可以绕过缓存。
