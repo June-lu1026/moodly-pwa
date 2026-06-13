@@ -1,20 +1,41 @@
-# Moodly PWA
+# Moodly PWA - fixed mobile install build
 
-Moodly is a static Progressive Web App for daily mood tracking.
+This build is optimized for installing Moodly on phones.
 
-## Deploy on Render
+## What was fixed
+
+- Safer relative `manifest.json` paths for Render / Netlify / Vercel deployment.
+- Updated `start_url`, `scope`, and app `id` so the PWA works even when hosted from a non-root path.
+- Improved service worker cache version and same-origin fetch handling.
+- Added an in-app install guide for iPhone, because iOS Safari does not support the Android/Chrome install prompt.
+- The Settings install button now explains: Safari → Share → Add to Home Screen.
+
+## Deploy
+
+Deploy the contents of this `moodly-webapp` folder as a static site.
+
+### Render
 
 - Service type: Static Site
 - Build command: `echo "No build needed"`
 - Publish directory: `.`
 
-## PWA files
+### Netlify / Vercel
 
-- `manifest.json` enables install metadata.
-- `service-worker.js` caches the app shell for basic offline access.
-- `icons/` contains the app icons used by Android, iOS, and browsers.
+- Build command: empty or `echo "No build needed"`
+- Output / publish directory: `.`
 
-After deployment, open the HTTPS URL on your phone:
+## Install on phone
 
-- iPhone: Safari → Share → Add to Home Screen
-- Android Chrome: browser menu → Install app
+### iPhone / iPad
+
+1. Open the deployed HTTPS URL in Safari.
+2. Tap the Share button.
+3. Tap `Add to Home Screen`.
+4. Tap `Add`.
+
+### Android
+
+1. Open the deployed HTTPS URL in Chrome.
+2. Tap the menu button.
+3. Tap `Install app` or `Add to Home screen`.
