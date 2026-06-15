@@ -1,4 +1,4 @@
-const CACHE_NAME = 'moodly-pwa-final-v4-intensity';
+const CACHE_NAME = 'moodly-pwa-final-v5-calendar-soft';
 const APP_SHELL = [
   './',
   './index.html',
