@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Moodly AI</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moodly AI Pro</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
 </head>
+
 <body>
-  <div class="container">
+
+<div class="hero">
+  <div class="glass">
     <h1>Moodly AI</h1>
-    <p>Tell me how you feel today</p>
+    <p>Understand your emotions. Live better.</p>
+  </div>
+</div>
 
-    <textarea id="input" placeholder="e.g. I feel stressed and tired..."></textarea>
-    <button onclick="runAI()">Analyze</button>
+<div class="app">
 
+  <div class="card">
+    <h2>Today Check-in</h2>
+    <textarea id="input" placeholder="How are you feeling today?"></textarea>
+    <button onclick="runAI()">Analyze with AI</button>
     <div id="output"></div>
   </div>
 
-  <script src="app.js"></script>
+  <div class="grid">
+    <div class="tile">Today</div>
+    <div class="tile">AI Reflection</div>
+    <div class="tile">Insights</div>
+    <div class="tile">Calendar</div>
+    <div class="tile">Chat</div>
+    <div class="tile">Settings</div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>

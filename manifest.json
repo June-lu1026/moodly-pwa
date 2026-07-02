@@ -1,8 +1,8 @@
 {
-  "name": "Moodly AI",
-  "short_name": "Moodly",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#6366f1"
+"name":"Moodly AI Pro",
+"short_name":"Moodly",
+"start_url":".",
+"display":"standalone",
+"background_color":"#0f172a",
+"theme_color":"#6366f1"
 }

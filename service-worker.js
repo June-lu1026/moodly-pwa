@@ -1,3 +1,3 @@
-self.addEventListener("install", () => {
-  console.log("Moodly installed");
+self.addEventListener("install",e=>{
+console.log("Moodly AI Pro installed");
 });
