@@ -1,5 +1,5 @@
 const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
-const STORE_KEY = "moodly_records_v5";
+const STORE_KEY = "moodly_records_v6";
 
 const I18N = {
   zh: {
@@ -191,14 +191,18 @@ function avgScoreForDate(date){
 
 function renderToday(){
   const list = getRecords().filter(r => r.date === todayISO());
-  document.getElementById("todayCount").textContent = String(list.length);
+  const count = document.getElementById("todayCount");
+  if (count) count.textContent = String(list.length);
   const box = document.getElementById("todayList");
+  if(!box) return;
   if(!list.length){ box.innerHTML = `<div class="record-item">${t("noRecords")}</div>`; return; }
   box.innerHTML = list.slice(0,4).map(r => `<div class="record-item"><strong>${moodText(r.mood)}<small>${r.time}</small></strong>${escapeHTML(r.note)}<br><small>${escapeHTML(r.reflection)}</small></div>`).join("");
 }
 function renderCalendar(){
+  const monthEl = document.getElementById("calendarMonth");
+  if (!monthEl) return;
   const d = new Date();
-  document.getElementById("calendarMonth").textContent = d.toLocaleDateString(currentLang==="zh" ? "zh-CN" : "en-US", {month:"long", year:"numeric"});
+  monthEl.textContent = d.toLocaleDateString(currentLang==="zh" ? "zh-CN" : "en-US", {month:"long", year:"numeric"});
   const grid = document.getElementById("calendarGrid");
   const week = ["mon","tue","wed","thu","fri","sat","sun"].map(k=>`<b>${t(k)}</b>`).join("");
   const year = d.getFullYear(), month = d.getMonth();
@@ -218,6 +222,8 @@ function renderCalendar(){
   document.getElementById("recentList").innerHTML = recent.length ? recent.map(r=>`<div class="record-item"><strong>${moodText(r.mood)}<small>${r.date} ${r.time}</small></strong>${escapeHTML(r.note)}</div>`).join("") : `<div class="record-item">${t("noRecords")}</div>`;
 }
 function renderInsights(){
+  const chart = document.getElementById("moodChart");
+  if (!chart) return;
   const dates = last7Dates();
   const scores = dates.map(d => avgScoreForDate(d));
   const points = scores.map((s,i) => {
@@ -227,7 +233,7 @@ function renderInsights(){
     return {x,y,val};
   });
   const poly = points.map(p=>`${p.x},${p.y}`).join(" ");
-  document.getElementById("moodChart").innerHTML = `<line x1="20" y1="130" x2="300" y2="130"></line><polyline points="${poly}"></polyline>${points.map(p=>`<circle cx="${p.x}" cy="${p.y}" r="5"></circle>`).join("")}`;
+  chart.innerHTML = `<line x1="20" y1="130" x2="300" y2="130"></line><polyline points="${poly}"></polyline>${points.map(p=>`<circle cx="${p.x}" cy="${p.y}" r="5"></circle>`).join("")}`;
   document.getElementById("weekLabels").innerHTML = dates.map(d => `<span>${new Date(d).toLocaleDateString(currentLang==="zh"?"zh-CN":"en-US",{weekday:"short"}).slice(0,2)}</span>`).join("");
 
   const actual = scores.filter(s => s !== null);
@@ -248,11 +254,10 @@ function renderInsights(){
 }
 function renderChat(){
   const chat = document.getElementById("chatMessages");
-  if(!chat.dataset.ready){
-    chat.dataset.ready = "1";
-    const latest = getRecords()[0];
-    if(latest) chat.innerHTML += `<div class="bubble left">${escapeHTML(latest.reflection)}</div>`;
-  }
+  if(!chat || chat.dataset.ready) return;
+  chat.dataset.ready = "1";
+  const latest = getRecords()[0];
+  if(latest) chat.innerHTML += `<div class="bubble left">${escapeHTML(latest.reflection)}</div>`;
 }
 function renderAll(){ renderToday(); renderCalendar(); renderInsights(); renderChat(); }
 
@@ -282,15 +287,19 @@ function init(){
       selectedMoodKey = btn.dataset.moodKey;
     });
   });
+
+  const messageBox = document.getElementById("messageBox");
   document.querySelectorAll(".tabbar button").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".screen").forEach(screen => screen.classList.remove("active"));
       document.getElementById(btn.dataset.screen).classList.add("active");
       document.querySelectorAll(".tabbar button").forEach(item => item.classList.remove("active"));
       btn.classList.add("active");
+      messageBox.classList.toggle("show", btn.dataset.screen === "chat");
       renderAll();
     });
   });
+
   document.getElementById("startBtn").addEventListener("click", runMoodlyAI);
   document.getElementById("langEN").addEventListener("click", () => setLanguage("en"));
   document.getElementById("langZH").addEventListener("click", () => setLanguage("zh"));
@@ -313,5 +322,5 @@ function init(){
 }
 
 window.addEventListener("beforeinstallprompt", event => { event.preventDefault(); deferredInstallPrompt = event; });
-if("serviceWorker" in navigator){ window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js?v=5").catch(()=>{})); }
+if("serviceWorker" in navigator){ window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js?v=6").catch(()=>{})); }
 document.addEventListener("DOMContentLoaded", init);

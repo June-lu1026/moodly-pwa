@@ -1,9 +1,9 @@
-const CACHE_NAME = "moodly-award-optimized-v5";
+const CACHE_NAME = "moodly-ui-scroll-fixed-v6";
 const ASSETS = [
   "./",
   "./index.html",
   "./style.css",
-  "./app.js?v=5",
+  "./app.js?v=6",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
