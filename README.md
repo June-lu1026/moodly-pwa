@@ -1,16 +1,17 @@
-# Moodly AI Pro
+# Moodly AI Final Render Package
 
-## Deploy to Render
+Complete Moodly AI landing page + prototype showcase + Gemini AI demo.
 
-1. Upload to GitHub
-2. Create Static Site
-3. Publish path: .
-4. Add Gemini API Key in app.js
+## How to use
 
-Replace:
-YOUR_GEMINI_API_KEY
+1. Open `app.js`.
+2. Replace `YOUR_GEMINI_API_KEY` with your Gemini API key.
+3. Upload all files to the root of your GitHub repo.
+4. Deploy on Render as a Static Site.
 
-## Upgrade:
-- Glass UI
-- AI Emotion analysis
-- Prototype dashboard
+Render settings:
+- Build Command: leave empty
+- Publish Directory: `.`
+
+Important:
+This is a frontend demo version. For production, do not expose API keys in frontend code. Use a backend proxy or serverless function.

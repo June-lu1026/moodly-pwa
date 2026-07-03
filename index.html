@@ -1,42 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moodly AI Pro</title>
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moodly AI — Emotional Companion</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <div class="orb orb-a"></div><div class="orb orb-b"></div>
 
-<div class="hero">
-  <div class="glass">
-    <h1>Moodly AI</h1>
-    <p>Understand your emotions. Live better.</p>
-  </div>
-</div>
+  <header class="nav">
+    <div class="brand"><div class="logo">⌣</div><b>Moodly</b></div>
+    <nav><a href="#features">Features</a><a href="#prototype">Prototype</a><a href="#ai-demo">AI Demo</a><a href="#flow">Flow</a></nav>
+    <a class="small-btn" href="#ai-demo">Try Demo</a>
+  </header>
 
-<div class="app">
+  <main>
+    <section class="hero">
+      <div class="copy">
+        <p class="tag">Moodly AI · Emotional Companion System</p>
+        <h1>Understand your emotions.<br><span>Live better.</span></h1>
+        <p class="desc">Moodly AI is not just a mood tracker. It helps users check in, understand emotional signals, receive gentle support, and see patterns over time.</p>
+        <div class="actions"><a class="btn" href="#ai-demo">Start Check-in</a><a class="ghost" href="#prototype">View Prototype</a></div>
+        <div class="badges"><div><small>Available as</small><b>PWA App</b></div><div><small>Powered by</small><b>Gemini AI</b></div></div>
+      </div>
 
-  <div class="card">
-    <h2>Today Check-in</h2>
-    <textarea id="input" placeholder="How are you feeling today?"></textarea>
-    <button onclick="runAI()">Analyze with AI</button>
-    <div id="output"></div>
-  </div>
+      <div class="showcase">
+        <div class="mood-card">
+          <div class="card-title">How are you today? <span>↻</span></div>
+          <p>Take a minute to check in with yourself.</p>
+          <div class="emojis"><button>😊<span>Great</span></button><button>🙂<span>Good</span></button><button>😐<span>Okay</span></button><button class="active">😟<span>Not good</span></button><button>😣<span>Awful</span></button></div>
+          <div class="mini-note">Feeling a bit overwhelmed today...<br>hard to focus and stressed at work.</div>
+          <button class="wide">Start Check-in</button>
+          <div class="mascot">⌣</div>
+        </div>
+      </div>
+    </section>
 
-  <div class="grid">
-    <div class="tile">Today</div>
-    <div class="tile">AI Reflection</div>
-    <div class="tile">Insights</div>
-    <div class="tile">Calendar</div>
-    <div class="tile">Chat</div>
-    <div class="tile">Settings</div>
-  </div>
+    <section id="features" class="features">
+      <h2>Why Moodly AI?</h2>
+      <div class="feature-grid">
+        <article><div class="icon">❤</div><h3>AI That Understands</h3><p>Goes beyond keywords to understand the feeling and context behind each note.</p></article>
+        <article><div class="icon green">🌿</div><h3>Gentle Conversations</h3><p>Responds with empathy and practical support, not judgment.</p></article>
+        <article><div class="icon blue">▥</div><h3>Insights That Help</h3><p>See emotional patterns, triggers, and growth over time.</p></article>
+        <article><div class="icon violet">🔒</div><h3>Privacy First</h3><p>Designed with privacy and local-first thinking.</p></article>
+      </div>
+    </section>
 
-</div>
+    <section class="split">
+      <div class="illustration"><div class="person"><div></div><span></span><i></i></div></div>
+      <div class="split-copy"><h2>Just 1 minute a day,<br>for a better you.</h2><p>Track your mood, reflect with AI, and build emotional awareness through small daily check-ins.</p><a class="btn" href="#ai-demo">Try Moodly Today</a></div>
+    </section>
 
-<script src="app.js"></script>
+    <section id="prototype" class="prototype">
+      <div class="title"><p class="tag">Prototype Screens</p><h2>Complete app experience</h2></div>
+      <div class="phone-grid">
+        <article><h4>1. Today</h4><div class="phone"><div class="status">9:41 <span>▰</span></div><h3>Good morning, Alex</h3><p>How are you feeling today?</p><div class="emoji-strip"><span>😊</span><span>🙂</span><span>😐</span><span>😟</span><span>😣</span></div><div class="panel">Feeling overwhelmed today...</div><button>Start Check-in</button><footer>Today · Insights · Calendar · Profile</footer></div></article>
+        <article><h4>2. AI Reflection</h4><div class="phone"><div class="status">9:41 <span>▰</span></div><h3>Here’s what I understand</h3><div class="panel"><b>You’re feeling stressed</b><p>It seems work is weighing on you today.</p></div><div class="panel"><b>Moodly says</b><p>It’s okay to feel overwhelmed. You’re doing your best.</p></div><div class="panel">☕ Take a short break</div></div></article>
+        <article><h4>3. Insights</h4><div class="phone"><div class="status">9:41 <span>▰</span></div><h3>Your Mood Insights</h3><div class="chart"><svg viewBox="0 0 260 120"><polyline points="10,70 50,86 90,55 130,72 170,48 210,64 250,40" fill="none" stroke="#ff6eb6" stroke-width="4" stroke-linecap="round"/></svg></div><div class="row"><span>Work Pressure</span><b>60%</b></div><div class="row"><span>Poor Sleep</span><b>30%</b></div></div></article>
+        <article><h4>4. Calendar</h4><div class="phone"><div class="status">9:41 <span>▰</span></div><h3>June 2026</h3><div class="cal"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i><i class="sel">10</i><i>11</i><i>12</i><i>13</i><i>14</i></div><div class="panel"><b>June 18</b><p>Stressed · work and deadlines.</p></div></div></article>
+        <article><h4>5. Chat with Moodly</h4><div class="phone"><div class="status">9:41 <span>▰</span></div><h3>Chat with Moodly</h3><div class="bubble left">Hi Alex, how are you feeling right now?</div><div class="bubble right">A bit anxious about tomorrow’s meeting.</div><div class="bubble left">That’s understandable. Want to talk through what’s on your mind?</div><div class="chatbox">Type your message...</div></div></article>
+        <article><h4>6. Breathing</h4><div class="phone"><div class="status">9:41 <span>▰</span></div><h3>Breathing Exercise</h3><p>Box Breathing</p><div class="breath"><span>Inhale<br><b>4s</b></span></div><button>Start</button></div></article>
+        <article><h4>7. Profile</h4><div class="phone"><div class="status">9:41 <span>▰</span></div><div class="avatar">A</div><h3>Alex</h3><p>alex@email.com</p><div class="row panel">Edit Profile <span>›</span></div><div class="row panel">Theme <span>Light</span></div><div class="row panel">Privacy <span>›</span></div></div></article>
+        <article><h4>8. Settings</h4><div class="phone"><div class="status">9:41 <span>▰</span></div><h3>Settings</h3><div class="row panel">Reminders <span>09:00 PM</span></div><div class="row panel">Theme <span>Light</span></div><div class="row panel">Language <span>English</span></div><div class="row panel danger">Delete All Data <span>›</span></div></div></article>
+      </div>
+    </section>
+
+    <section id="ai-demo" class="ai-demo">
+      <div class="title"><p class="tag">Gemini AI Demo</p><h2>Try a real Moodly check-in</h2><p>Enter a short feeling note. After adding your Gemini API key, Moodly will return emotional analysis and a gentle response.</p></div>
+      <div class="demo-card">
+        <textarea id="moodInput" placeholder="Example: I feel overwhelmed today. I have a lot to do and I can’t focus."></textarea>
+        <button class="btn" onclick="runMoodlyAI()">Analyze with Moodly AI</button>
+        <div id="aiOutput" class="ai-output"><p class="muted">AI reflection will appear here.</p></div>
+      </div>
+    </section>
+
+    <section id="flow" class="flow">
+      <div class="title"><p class="tag">User Flow</p><h2>From check-in to growth</h2></div>
+      <div class="flow-grid"><div><b>⌣</b><strong>Open App</strong></div><span>→</span><div><b>😊</b><strong>Check-in</strong></div><span>→</span><div><b>🧠</b><strong>AI Understands</strong></div><span>→</span><div><b>💬</b><strong>AI Reflection</strong></div><span>→</span><div><b>▥</b><strong>Insights</strong></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="brand"><div class="logo">⌣</div><b>Moodly</b></div><p>© 2026 Moodly AI. Designed for emotional awareness.</p></footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
