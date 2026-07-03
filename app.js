@@ -7,7 +7,7 @@ const I18N = {
     installTitle:"Install Moodly", installDesc:"添加到手机桌面，像 App 一样打开。", installBtn:"Install",
     currentMood:"当前心情", chooseMood:"选择或描述此刻的感受",
     moodAwful:"很糟糕", moodLow:"低落", moodCalm:"平静", moodHappy:"开心", moodGreat:"很好",
-    writeSentence:"写下一句话 ✎", inputPlaceholder:"例如：今天有点累，但也完成了很多事", startRecord:"开始记录",
+    writeSentence:"写下一句话（可选）✎", inputPlaceholder:"可以不写，直接选择心情后点击开始记录", startRecord:"开始记录",
     aiReflection:"AI 反思", aiReflectionDesc:"基于你的记录，AI 给你的温柔回应", aiWaiting:"记录后，AI 反馈会显示在这里。",
     todayRecords:"今日记录", calendarTitle:"Calendar", calendarSubtitle:"查看你的心情记录", thisMonth:"本月",
     mon:"一", tue:"二", wed:"三", thu:"四", fri:"五", sat:"六", sun:"日",
@@ -31,7 +31,7 @@ const I18N = {
     installTitle:"Install Moodly", installDesc:"Add Moodly to your home screen and open it like an app.", installBtn:"Install",
     currentMood:"Current Mood", chooseMood:"Choose or describe how you feel right now",
     moodAwful:"Awful", moodLow:"Low", moodCalm:"Calm", moodHappy:"Happy", moodGreat:"Great",
-    writeSentence:"Write one sentence ✎", inputPlaceholder:"Example: I feel tired today, but I still finished many things", startRecord:"Start Check-in",
+    writeSentence:"Write one sentence (optional) ✎", inputPlaceholder:"Optional: choose a mood and start check-in directly", startRecord:"Start Check-in",
     aiReflection:"AI Reflection", aiReflectionDesc:"Based on your note, AI gives you a gentle response", aiWaiting:"After check-in, AI reflection will appear here.",
     todayRecords:"Today Records", calendarTitle:"Calendar", calendarSubtitle:"Review your mood history", thisMonth:"This Month",
     mon:"M", tue:"T", wed:"W", thu:"T", fri:"F", sat:"S", sun:"S",
@@ -118,8 +118,11 @@ function parseAI(text){
 async function runMoodlyAI(){
   const input = document.getElementById("moodInput");
   const output = document.getElementById("aiOutput");
-  const note = input.value.trim();
-  if(!note){ output.textContent = t("emptyInput"); return; }
+  let note = input.value.trim();
+  const selectedMoodLabel = moodText(selectedMoodKey);
+  if(!note){
+    note = currentLang === "zh" ? `我现在的心情是：${selectedMoodLabel}` : `My current mood is: ${selectedMoodLabel}`;
+  }
   output.textContent = t("thinking");
 
   let result;
@@ -130,7 +133,7 @@ async function runMoodlyAI(){
     const prompt = `You are Moodly AI, a gentle emotional companion.
 Do not diagnose. Do not make medical claims.
 Language: ${currentLang === "zh" ? "Chinese" : "English"}
-User selected mood: ${moodText(selectedMoodKey)}
+User selected mood: ${selectedMoodLabel}
 User note: ${note}
 
 Return strict JSON only:
@@ -168,7 +171,7 @@ Return strict JSON only:
   records.unshift(record);
   saveRecords(records.slice(0, 120));
 
-  output.innerHTML = `<b>${result.emotion || moodText(selectedMoodKey)}</b><br><br>${result.response}<br><br><b>${t("smallSuggestion")}</b>${result.suggestion}<br><br><small>${t("saved")}</small>`;
+  output.innerHTML = `<b>${result.emotion || selectedMoodLabel}</b><br><br>${result.response}<br><br><b>${t("smallSuggestion")}</b>${result.suggestion}<br><br><small>${t("saved")}</small>`;
   input.value = "";
   renderAll();
 }
@@ -322,5 +325,5 @@ function init(){
 }
 
 window.addEventListener("beforeinstallprompt", event => { event.preventDefault(); deferredInstallPrompt = event; });
-if("serviceWorker" in navigator){ window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js?v=6").catch(()=>{})); }
+if("serviceWorker" in navigator){ window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js?v=10").catch(()=>{})); }
 document.addEventListener("DOMContentLoaded", init);

@@ -12,43 +12,7 @@ body{display:flex;justify-content:center}
 .top{display:flex;justify-content:space-between;align-items:flex-start;margin:8px 0 20px}
 .top h1{font-size:36px;line-height:1;margin:0 0 8px;font-weight:900;letter-spacing:-.04em}
 .top p{margin:0;color:#69789f;font-weight:700}
-.app-mark{
-  width: 56px;
-  height: 56px;
-  border-radius: 18px;
-  position: relative;
-  background: linear-gradient(135deg, #8b6ff2 0%, #de62c8 100%);
-  box-shadow: 0 14px 32px rgba(126, 105, 255, 0.22);
-  flex-shrink: 0;
-}
-
-.app-mark-logo {
-  display: block;
-}
-
-.app-mark-letter {
-  position: absolute;
-  top: 8px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  font-size: 28px;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -1px;
-}
-
-.app-mark-smile {
-  position: absolute;
-  left: 50%;
-  bottom: 12px;
-  width: 22px;
-  height: 10px;
-  transform: translateX(-50%);
-  border-bottom: 3px solid rgba(255, 255, 255, 0.95);
-  border-radius: 0 0 20px 20px;
-}
+.app-mark{width:52px;height:52px;border-radius:17px;position:relative;flex-shrink:0;background:linear-gradient(135deg,#7e7df4 0%,#df62c8 100%);box-shadow:0 14px 32px rgba(126,105,255,.23);overflow:hidden}
 .card{background:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.96);box-shadow:0 18px 55px rgba(80,90,130,.12);border-radius:24px;padding:20px;margin-bottom:16px;backdrop-filter:blur(16px)}
 .card h2{font-size:18px;margin:0 0 6px}
 .hint,.card p{color:#6b7aa1;margin:0 0 14px;line-height:1.55}
@@ -91,3 +55,6 @@ textarea{width:100%;min-height:92px;border:0;background:#f3f5fb;border-radius:18
 .mini-note-card{background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(242,243,255,.86))}
 .summary-text{font-weight:700}
 @media(min-width:700px){body{padding:32px}.phone-app{border-radius:42px;height:860px;min-height:860px;max-height:900px}.screens{height:calc(860px - 42px - 76px)}.tabbar{border-radius:0 0 42px 42px}}
+
+.logo-letter{position:absolute;left:0;top:5px;width:100%;text-align:center;color:#fff;font-size:27px;font-weight:900;line-height:1;letter-spacing:-1px;text-shadow:0 2px 8px rgba(60,50,120,.18)}
+.logo-smile{position:absolute;left:50%;bottom:8px;width:23px;height:12px;transform:translateX(-50%);border-bottom:3px solid rgba(255,255,255,.92);border-radius:0 0 22px 22px}

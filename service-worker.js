@@ -1,9 +1,9 @@
-const CACHE_NAME = "moodly-icon-continuity-v8";
+const CACHE_NAME = "moodly-final-m-smile-v10";
 const ASSETS = [
   "./",
   "./index.html",
   "./style.css",
-  "./app.js?v=8",
+  "./app.js?v=10",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png"

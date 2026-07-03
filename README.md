@@ -1,30 +1,42 @@
-# Moodly AI - UI & Scroll Fixed Version
+# Moodly AI PWA - Final M + Smile Logo Version
 
-修复内容：
-- Chat 页面输入框不再和底部导航重叠
-- Chat 输入框只在 Chat 页面出现
-- App 内每个页面可独立滚动
-- Insights 页面可以滑动到底部
-- 保留动态记录、Calendar、Insights、Triggers、Localized Expression、语言切换
-- Service Worker 更新到 v6
+这版已按你的图标方向调整：
 
-## 部署后请用
-`你的网址?v=6`
+- 右上角图标：紫粉渐变 + 白色 M + 下方微笑弧线
+- PWA 安装图标：icons/icon-192.png、icons/icon-512.png 已同步为 M + smile
+- 保留 PWA App 结构：Today / Calendar / Insights / Chat / Settings
+- 保留语言切换
+- 保留心情可直接记录，文字可选
+- 保留动态 Calendar、Insights、触发点、本地化表达
 
-如果还是旧页面，请清除浏览器网站缓存，或在 Render 手动 Redeploy 最新 commit。
+## 上传 GitHub
 
+把本文件夹里的所有文件上传到仓库根目录：
 
-## v7 修复
-- 只选择心情也可以点击“开始记录”
-- 输入框改为可选
-- 如果没有填写文字，会自动生成一条心情记录，例如：“我现在的心情是：平静”
-- Service Worker 更新到 v7
+- index.html
+- style.css
+- app.js
+- manifest.webmanifest
+- service-worker.js
+- render.yaml
+- icons/
 
-部署后请用：
-`你的网址?v=7`
+## Gemini API
 
+打开 app.js 第一行：
 
-## v8 图标延续
-- PWA 图标已调整为之前的紫粉渐变笑脸图标风格。
-- Today 顶部图标继续使用同一视觉语言。
-- 部署后建议用 `?v=8` 打开，避免旧缓存。
+const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
+
+替换成你的 Gemini Key。
+
+## Render 部署
+
+Static Site
+Publish Directory: .
+
+## 如果看不到更新
+
+访问：
+https://moodly-pwa.onrender.com?v=10
+
+或者清理浏览器缓存 / Render Manual Deploy latest commit。
