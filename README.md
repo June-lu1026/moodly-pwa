@@ -1,17 +1,19 @@
-# Moodly AI PWA - Final M + Smile Logo Version
+# Moodly PWA - Restored Original Logo v11
 
-这版已按你的图标方向调整：
+这版已从你上传的 `moodly-pwa-calendar-soft-v3(1).zip` 里提取原来的 logo 样式，并同步到当前 PWA：
 
-- 右上角图标：紫粉渐变 + 白色 M + 下方微笑弧线
-- PWA 安装图标：icons/icon-192.png、icons/icon-512.png 已同步为 M + smile
-- 保留 PWA App 结构：Today / Calendar / Insights / Chat / Settings
-- 保留语言切换
-- 保留心情可直接记录，文字可选
-- 保留动态 Calendar、Insights、触发点、本地化表达
+- `icons/icon-192.png`
+- `icons/icon-512.png`
+- `icons/apple-touch-icon.png`
+- `icons/favicon-32.png`
+- `icons/maskable-icon-512.png`
+- 页面右上角 app-mark 直接使用 `icons/icon-192.png`，不再用 CSS 重新画 M 和笑脸
+
+这样会更接近你之前桌面上的 Moodly 图标效果。
 
 ## 上传 GitHub
 
-把本文件夹里的所有文件上传到仓库根目录：
+覆盖仓库根目录里的这些文件：
 
 - index.html
 - style.css
@@ -21,22 +23,9 @@
 - render.yaml
 - icons/
 
-## Gemini API
+## 部署后看不到变化
 
-打开 app.js 第一行：
+请用：
+`https://moodly-pwa.onrender.com?v=11`
 
-const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
-
-替换成你的 Gemini Key。
-
-## Render 部署
-
-Static Site
-Publish Directory: .
-
-## 如果看不到更新
-
-访问：
-https://moodly-pwa.onrender.com?v=10
-
-或者清理浏览器缓存 / Render Manual Deploy latest commit。
+或者清除浏览器缓存 / Render Manual Deploy latest commit。

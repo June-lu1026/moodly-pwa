@@ -1,12 +1,15 @@
-const CACHE_NAME = "moodly-final-m-smile-v10";
+const CACHE_NAME = "moodly-logo-restored-v11";
 const ASSETS = [
   "./",
   "./index.html",
   "./style.css",
-  "./app.js?v=10",
+  "./app.js?v=11",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
-  "./icons/icon-512.png"
+  "./icons/icon-512.png",
+  "./icons/apple-touch-icon.png",
+  "./icons/favicon-32.png",
+  "./icons/maskable-icon-512.png"
 ];
 
 self.addEventListener("install", event => {
