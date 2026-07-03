@@ -1,5 +1,5 @@
 services:
   - type: web
-    name: moodly-ai-final
+    name: moodly-ai-app
     env: static
     staticPublishPath: .

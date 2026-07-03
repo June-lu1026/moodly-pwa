@@ -1,87 +1,82 @@
 const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
 
-function extractGeminiText(data) {
-  if (data && data.error && data.error.message) {
-    throw new Error(data.error.message);
-  }
-  return (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text) || "";
+let selectedMood = "平静";
+
+document.querySelectorAll("[data-mood]").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    document.querySelectorAll("[data-mood]").forEach(function(b) { b.classList.remove("selected"); });
+    btn.classList.add("selected");
+    selectedMood = btn.dataset.mood;
+  });
+});
+
+function switchScreen(name, button) {
+  document.querySelectorAll(".screen").forEach(function(screen) { screen.classList.remove("active"); });
+  document.getElementById("screen-" + name).classList.add("active");
+  document.querySelectorAll(".bottom-nav button").forEach(function(btn) { btn.classList.remove("active"); });
+  button.classList.add("active");
 }
 
-function safeJsonFromText(text) {
+function extractText(data) {
+  if (data && data.error && data.error.message) throw new Error(data.error.message);
+  return data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+}
+
+function parseMoodly(text) {
   const cleaned = text.replace(/```json/gi, "").replace(/```/g, "").trim();
-  try {
-    return JSON.parse(cleaned);
-  } catch (error) {
+  try { return JSON.parse(cleaned); }
+  catch(e) {
     return {
-      emotion: "Reflection",
-      intensity: "-",
-      response: cleaned || "Moodly did not receive a valid response.",
-      suggestion: "Try writing one short sentence about how you feel."
+      emotion: selectedMood,
+      response: cleaned || "我听见了你的感受。你已经开始照顾自己了，这很重要。",
+      suggestion: "先做一次深呼吸，然后给自己 5 分钟休息。"
     };
   }
-}
-
-function renderResult(result) {
-  return `
-    <div class="result-card">
-      <h3>${result.emotion || "Mood Reflection"}</h3>
-      <p><strong>Intensity:</strong> ${result.intensity || "-"}</p>
-      <p><strong>Moodly says:</strong><br>${result.response || "No response."}</p>
-      <p><strong>Small suggestion:</strong><br>${result.suggestion || "Take one slow breath and check in again later."}</p>
-    </div>
-  `;
 }
 
 async function runMoodlyAI() {
   const input = document.getElementById("moodInput");
   const output = document.getElementById("aiOutput");
-  const text = input.value.trim();
+  const note = input.value.trim();
 
-  if (!text) {
-    output.innerHTML = '<p class="muted">Write one sentence about how you feel first.</p>';
+  if (!note) {
+    output.textContent = "先写下一句话，Moodly 才能理解你的状态。";
     return;
   }
 
   if (!GEMINI_API_KEY || GEMINI_API_KEY === "YOUR_GEMINI_API_KEY") {
-    output.innerHTML = '<p><strong>Gemini API key is not set yet.</strong></p><p class="muted">Open app.js and replace YOUR_GEMINI_API_KEY with your Gemini API key.</p>';
+    output.innerHTML = "还没有添加 Gemini API Key。<br>打开 app.js，把第一行 YOUR_GEMINI_API_KEY 替换成你的 Key。";
     return;
   }
 
-  output.innerHTML = '<p class="muted">Moodly is thinking...</p>';
+  output.textContent = "Moodly 正在理解你的情绪...";
 
   const prompt = `You are Moodly AI, a gentle emotional companion.
+Do not diagnose. Do not make medical claims.
+User selected mood: ${selectedMood}
+User note: ${note}
 
-Analyze the user's emotional state. Do not diagnose. Do not provide medical claims.
-Respond warmly, briefly, and practically.
-
-User input:
-"${text}"
-
-Return STRICT JSON only:
+Return strict JSON only:
 {
-  "emotion": "one short emotion label",
-  "intensity": "0-100",
-  "response": "a warm 1-2 sentence emotional reflection",
-  "suggestion": "one small action the user can take in 5 minutes"
+  "emotion": "short emotion label in Chinese",
+  "response": "a warm and gentle reflection in Chinese, 1-2 sentences",
+  "suggestion": "one small action in Chinese that can be done in 5 minutes"
 }`;
 
   try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-      {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({contents: [{parts: [{text: prompt}]}]})
-      }
-    );
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({contents: [{parts: [{text: prompt}]}]})
+    });
 
-    const data = await response.json();
-    const rawText = extractGeminiText(data);
-    const result = safeJsonFromText(rawText);
+    const data = await res.json();
+    const raw = extractText(data);
+    const result = parseMoodly(raw);
 
-    output.innerHTML = renderResult(result);
+    output.innerHTML = `<b>${result.emotion || selectedMood}</b><br><br>${result.response}<br><br><b>小建议：</b>${result.suggestion}`;
   } catch (error) {
-    output.innerHTML = '<p><strong>AI request failed.</strong></p><p class="muted">' + error.message + '</p><p class="muted">Check your API key, Google AI Studio permissions, or browser console.</p>';
+    output.innerHTML = "AI 请求失败：<br>" + error.message;
   }
 }
 

@@ -1,10 +1,10 @@
 {
   "name": "Moodly AI",
   "short_name": "Moodly",
-  "description": "An AI emotional companion that helps users understand and reflect on emotions.",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#070f1d",
-  "theme_color": "#5b78ff",
+  "background_color": "#f7f8ff",
+  "theme_color": "#7d7cff",
+  "orientation": "portrait",
   "icons": []
 }

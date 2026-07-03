@@ -1,17 +1,22 @@
-# Moodly AI Final Render Package
+# Moodly AI App Style Package
 
-Complete Moodly AI landing page + prototype showcase + Gemini AI demo.
+This version is an APP-style PWA, not a landing page.
 
-## How to use
+## Deploy to Render
 
 1. Open `app.js`.
 2. Replace `YOUR_GEMINI_API_KEY` with your Gemini API key.
-3. Upload all files to the root of your GitHub repo.
-4. Deploy on Render as a Static Site.
+3. Upload all files to GitHub repo root.
+4. Render → New → Static Site
+5. Build Command: leave empty
+6. Publish Directory: `.`
 
-Render settings:
-- Build Command: leave empty
-- Publish Directory: `.`
+## Screens
 
-Important:
-This is a frontend demo version. For production, do not expose API keys in frontend code. Use a backend proxy or serverless function.
+- Today
+- Calendar
+- Insights
+- Chat
+- Settings
+
+This is designed as a mobile app interface. Open it on mobile or use browser mobile preview for best experience.
