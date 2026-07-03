@@ -1,5 +1,5 @@
 services:
   - type: web
-    name: moodly-pwa-app
+    name: moodly-award-optimized
     env: static
     staticPublishPath: .

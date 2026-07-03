@@ -1,14 +1,20 @@
-# Moodly AI PWA App
+# Moodly AI - Award Optimized PWA
 
-这是一个真正按 PWA App 结构做的 Moodly AI：
+这版是参赛优化版：
 
-- 手机 App 样式界面
-- Today / Calendar / Insights / Chat / Settings
-- 底部 Tab Bar
-- PWA manifest
-- Service Worker 离线缓存
-- Install 按钮
-- Gemini AI 接入占位
+## 关键升级
+
+- 开始记录后会真正保存数据到 localStorage
+- Today 会显示今日记录
+- Calendar 会根据记录动态显示不同心情色块
+- Insights 会根据最近 7 天记录动态生成趋势图
+- 情绪触发点会根据输入文本自动识别
+- Localized Expression 会生成更自然的英文情绪表达
+- 没有 Gemini Key 时也能跑本地 Demo 反馈
+- 有 Gemini Key 时会调用 Gemini API
+- Settings 保留 EN / 中文 切换
+- 支持 Export Data / Delete All Data
+- PWA manifest + service worker + icons
 
 ## 使用方法
 
@@ -20,7 +26,9 @@
 6. 部署后用手机 Chrome 打开网址
 7. 点击 Install，或浏览器菜单选择“添加到主屏幕”
 
-## 说明
+## 更新后看到旧页面怎么办
 
-这是 PWA App，不是 APK。它可以像 App 一样安装到手机桌面，但本质是 Web App。
-如果后续要 APK，需要再用 Capacitor / Bubblewrap 包装。
+请用：
+`你的网址?v=5`
+
+或者清除浏览器缓存 / Render 手动重新部署最新 commit。
