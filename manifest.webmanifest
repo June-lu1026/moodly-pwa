@@ -1,7 +1,7 @@
 {
   "name": "Moodly AI",
   "short_name": "Moodly",
-  "description": "Moodly AI PWA mood companion app",
+  "description": "Moodly AI gentle emotional companion PWA",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
@@ -10,7 +10,7 @@
     "standalone",
     "minimal-ui"
   ],
-  "background_color": "#f6f7ff",
+  "background_color": "#f7f8ff",
   "theme_color": "#8b7cff",
   "orientation": "portrait",
   "icons": [

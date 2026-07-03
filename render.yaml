@@ -1,5 +1,5 @@
 services:
   - type: web
-    name: moodly-ui-scroll-fixed
+    name: moodly-ai-simplified
     env: static
     staticPublishPath: .

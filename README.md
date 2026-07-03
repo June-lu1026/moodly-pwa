@@ -1,19 +1,19 @@
-# Moodly PWA - Restored Original Logo v11
+# Moodly AI Simplified Final PWA
 
-这版已从你上传的 `moodly-pwa-calendar-soft-v3(1).zip` 里提取原来的 logo 样式，并同步到当前 PWA：
+这版是简化后的 App UI 版本，适合参赛 Demo：
 
-- `icons/icon-192.png`
-- `icons/icon-512.png`
-- `icons/apple-touch-icon.png`
-- `icons/favicon-32.png`
-- `icons/maskable-icon-512.png`
-- 页面右上角 app-mark 直接使用 `icons/icon-192.png`，不再用 CSS 重新画 M 和笑脸
-
-这样会更接近你之前桌面上的 Moodly 图标效果。
+- Today / AI Reflection / Insights / Calendar / Chat / Settings
+- 底部导航保留 5 个主页面
+- AI Reflection 通过 Check In 后进入/查看
+- M + Smile PWA 图标
+- 文本输入可选，选择心情即可记录
+- 动态 Calendar、Insights、情绪触发点、本地化表达
+- EN / 中文切换
+- PWA manifest + service worker
 
 ## 上传 GitHub
 
-覆盖仓库根目录里的这些文件：
+把所有文件上传到仓库根目录：
 
 - index.html
 - style.css
@@ -23,9 +23,21 @@
 - render.yaml
 - icons/
 
-## 部署后看不到变化
+## Gemini API
 
-请用：
-`https://moodly-pwa.onrender.com?v=11`
+打开 app.js 第一行：
 
-或者清除浏览器缓存 / Render Manual Deploy latest commit。
+const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
+
+替换成你的 Gemini API Key。
+
+## Render
+
+Static Site
+Publish Directory: .
+
+## 避免缓存
+
+部署后用：
+
+https://moodly-pwa.onrender.com?v=11
