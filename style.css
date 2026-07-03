@@ -12,7 +12,7 @@ body{display:flex;justify-content:center}
 .top{display:flex;justify-content:space-between;align-items:flex-start;margin:8px 0 20px}
 .top h1{font-size:36px;line-height:1;margin:0 0 8px;font-weight:900;letter-spacing:-.04em}
 .top p{margin:0;color:#69789f;font-weight:700}
-.app-mark{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,#846ff0,#e05dc4);color:#fff;font-size:32px;line-height:1;box-shadow:0 14px 32px rgba(126,105,255,.23);font-weight:700}
+.app-mark{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg, #8b6ff2 0%, #d85cc7 100%);color:#fff;font-size:30px;line-height:1;box-shadow:0 14px 32px rgba(126,105,255,.23);font-weight:700}
 .card{background:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.96);box-shadow:0 18px 55px rgba(80,90,130,.12);border-radius:24px;padding:20px;margin-bottom:16px;backdrop-filter:blur(16px)}
 .card h2{font-size:18px;margin:0 0 6px}
 .hint,.card p{color:#6b7aa1;margin:0 0 14px;line-height:1.55}
