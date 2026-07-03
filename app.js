@@ -1,6 +1,7 @@
 const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
 
 let selectedMood = "平静";
+let deferredInstallPrompt = null;
 
 document.querySelectorAll("[data-mood]").forEach(function(btn) {
   btn.addEventListener("click", function() {
@@ -10,12 +11,31 @@ document.querySelectorAll("[data-mood]").forEach(function(btn) {
   });
 });
 
-function switchScreen(name, button) {
-  document.querySelectorAll(".screen").forEach(function(screen) { screen.classList.remove("active"); });
-  document.getElementById("screen-" + name).classList.add("active");
-  document.querySelectorAll(".bottom-nav button").forEach(function(btn) { btn.classList.remove("active"); });
-  button.classList.add("active");
-}
+document.querySelectorAll(".tabbar button").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    const target = btn.dataset.screen;
+    document.querySelectorAll(".screen").forEach(function(screen) { screen.classList.remove("active"); });
+    document.getElementById(target).classList.add("active");
+    document.querySelectorAll(".tabbar button").forEach(function(item) { item.classList.remove("active"); });
+    btn.classList.add("active");
+  });
+});
+
+window.addEventListener("beforeinstallprompt", function(event) {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  document.getElementById("installCard").style.display = "flex";
+});
+
+document.getElementById("installBtn").addEventListener("click", async function() {
+  if (!deferredInstallPrompt) {
+    alert("如果浏览器没有弹出安装，请用 Chrome 菜单选择：添加到主屏幕 / Install app。");
+    return;
+  }
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+});
 
 function extractText(data) {
   if (data && data.error && data.error.message) throw new Error(data.error.message);

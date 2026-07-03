@@ -1,32 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Moodly AI App</title>
-  <meta name="theme-color" content="#f7f8ff" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#f6f7ff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Moodly" />
+  <title>Moodly AI</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div class="app-shell">
+  <div class="phone-app">
     <div class="status-bar">
       <span>9:41</span>
-      <span>▮▮  5G  🔋</span>
+      <span>5G  🔋</span>
     </div>
 
-    <main id="screen-today" class="screen active">
-      <header class="screen-header">
+    <main class="screen active" id="today">
+      <header class="top">
         <div>
           <h1>Today</h1>
           <p>你好，今天想记录一下心情吗？</p>
         </div>
-        <div class="leaf">🌿</div>
+        <div class="app-mark">⌣</div>
       </header>
 
-      <section class="card mood-card">
+      <section class="card install-card" id="installCard">
+        <div>
+          <h2>Install Moodly</h2>
+          <p>把 Moodly 添加到手机桌面，像 App 一样打开。</p>
+        </div>
+        <button id="installBtn">Install</button>
+      </section>
+
+      <section class="card">
         <h2>当前心情</h2>
-        <p class="sub">选择或描述此刻的感受</p>
+        <p class="hint">选择或描述此刻的感受</p>
         <div class="mood-row">
           <button data-mood="很糟糕">😣<span>很糟糕</span></button>
           <button data-mood="低落">😟<span>低落</span></button>
@@ -36,34 +48,41 @@
         </div>
       </section>
 
-      <section class="card input-card">
+      <section class="card">
         <h2>写下一句话 ✎</h2>
         <textarea id="moodInput" placeholder="例如：今天有点累，但也完成了很多事"></textarea>
         <button class="primary" onclick="runMoodlyAI()">开始记录</button>
       </section>
 
       <section class="card ai-card">
-        <div class="ai-title"><span>AI</span><div><h2>AI 反思</h2><p>基于你的记录，AI 给你的温柔回应</p></div></div>
+        <div class="ai-head">
+          <span>AI</span>
+          <div>
+            <h2>AI 反思</h2>
+            <p>基于你的记录，AI 给你的温柔回应</p>
+          </div>
+        </div>
         <div id="aiOutput" class="ai-output">记录后，AI 反馈会显示在这里。</div>
       </section>
 
-      <section class="card suggestion-card">
+      <section class="card suggestion">
         <h2>今天的小建议</h2>
         <p>给自己一个小小的奖励，哪怕是一杯喜欢的饮品，也能让心情变得更好。</p>
       </section>
     </main>
 
-    <main id="screen-calendar" class="screen">
-      <header class="screen-header">
+    <main class="screen" id="calendar">
+      <header class="top">
         <div>
           <h1>Calendar</h1>
           <p>查看你的心情记录</p>
         </div>
-        <div class="leaf">📅</div>
+        <div class="app-mark">📅</div>
       </header>
+
       <section class="card">
-        <div class="month-head"><h2>July 2026</h2><span>本月</span></div>
-        <div class="calendar">
+        <div class="section-head"><h2>July 2026</h2><span>本月</span></div>
+        <div class="calendar-grid">
           <b>一</b><b>二</b><b>三</b><b>四</b><b>五</b><b>六</b><b>日</b>
           <i></i><i></i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i>
           <i>6</i><i class="good">7</i><i>8</i><i class="mid">9</i><i>10</i><i>11</i><i>12</i>
@@ -71,86 +90,104 @@
           <i>20</i><i>21</i><i>22</i><i>23</i><i>24</i><i>25</i><i>26</i>
         </div>
       </section>
-      <section class="card record-card">
+
+      <section class="card">
         <h2>最近记录</h2>
         <p><b>7月15日：</b>有点焦虑，但晚上散步之后好了很多。</p>
       </section>
     </main>
 
-    <main id="screen-insights" class="screen">
-      <header class="screen-header">
+    <main class="screen" id="insights">
+      <header class="top">
         <div>
           <h1>Insights</h1>
           <p>看见你的情绪变化</p>
         </div>
-        <div class="leaf">📊</div>
+        <div class="app-mark">📊</div>
       </header>
-      <section class="card chart-card">
-        <div class="month-head"><h2>本周情绪趋势</h2><span>本周</span></div>
+
+      <section class="card">
+        <div class="section-head"><h2>本周情绪趋势</h2><span>本周</span></div>
         <svg class="chart" viewBox="0 0 320 160">
-          <line x1="20" y1="130" x2="300" y2="130" />
-          <polyline points="25,95 70,112 115,72 160,92 205,56 250,82 295,48" />
-          <circle cx="25" cy="95" r="5"/><circle cx="70" cy="112" r="5"/><circle cx="115" cy="72" r="5"/><circle cx="160" cy="92" r="5"/><circle cx="205" cy="56" r="5"/><circle cx="250" cy="82" r="5"/><circle cx="295" cy="48" r="5"/>
+          <line x1="20" y1="130" x2="300" y2="130"></line>
+          <polyline points="25,95 70,112 115,72 160,92 205,56 250,82 295,48"></polyline>
+          <circle cx="25" cy="95" r="5"></circle>
+          <circle cx="70" cy="112" r="5"></circle>
+          <circle cx="115" cy="72" r="5"></circle>
+          <circle cx="160" cy="92" r="5"></circle>
+          <circle cx="205" cy="56" r="5"></circle>
+          <circle cx="250" cy="82" r="5"></circle>
+          <circle cx="295" cy="48" r="5"></circle>
         </svg>
       </section>
+
       <section class="card">
         <h2>AI Summary</h2>
         <p>本周你的情绪整体平稳，周三出现短暂低落，但周末恢复明显。继续保持自我关照。</p>
       </section>
-      <section class="card chips-card">
+
+      <section class="card">
         <h2>情绪触发点</h2>
-        <div class="chips"><span>💼 工作压力</span><span>🌙 睡眠不足</span><span>👥 社交能量</span></div>
+        <div class="chips">
+          <span>💼 工作压力</span>
+          <span>🌙 睡眠不足</span>
+          <span>👥 社交能量</span>
+        </div>
       </section>
     </main>
 
-    <main id="screen-chat" class="screen">
-      <header class="screen-header">
+    <main class="screen" id="chat">
+      <header class="top">
         <div>
           <h1>Chat</h1>
           <p>和 Moodly 聊聊</p>
         </div>
-        <div class="leaf">💬</div>
+        <div class="app-mark">💬</div>
       </header>
+
       <section class="card chat-card">
         <div class="bubble left">Hi，我在这里。你现在感觉怎么样？</div>
         <div class="bubble right">今天有点累，事情太多了。</div>
         <div class="bubble left">听起来你今天承受了不少。我们可以先把压力拆小一点。</div>
       </section>
-      <section class="chat-input">
+
+      <section class="message-box">
         <input placeholder="Type your message..." />
         <button>➤</button>
       </section>
     </main>
 
-    <main id="screen-settings" class="screen">
-      <header class="screen-header">
+    <main class="screen" id="settings">
+      <header class="top">
         <div>
           <h1>Settings</h1>
           <p>管理你的 Moodly</p>
         </div>
-        <div class="leaf">⚙️</div>
+        <div class="app-mark">⚙️</div>
       </header>
-      <section class="card list-card">
+
+      <section class="card list">
         <div class="row"><span>🔔 Reminders</span><b>09:00 PM</b></div>
         <div class="row"><span>🌙 Theme</span><b>Light</b></div>
         <div class="row"><span>🌐 Language</span><b>中文</b></div>
       </section>
-      <section class="card list-card">
+
+      <section class="card list">
         <div class="row"><span>⬇️ Export Data</span><b>›</b></div>
         <div class="row"><span>🛡 Privacy Policy</span><b>›</b></div>
         <div class="row danger"><span>🗑 Delete All Data</span><b>›</b></div>
       </section>
     </main>
 
-    <nav class="bottom-nav">
-      <button class="active" onclick="switchScreen('today', this)">⌂<span>Today</span></button>
-      <button onclick="switchScreen('calendar', this)">▣<span>Calendar</span></button>
-      <button onclick="switchScreen('insights', this)">▥<span>Insights</span></button>
-      <button onclick="switchScreen('chat', this)">◌<span>Chat</span></button>
-      <button onclick="switchScreen('settings', this)">⚙<span>Settings</span></button>
+    <nav class="tabbar">
+      <button class="active" data-screen="today">⌂<span>Today</span></button>
+      <button data-screen="calendar">▣<span>Calendar</span></button>
+      <button data-screen="insights">▥<span>Insights</span></button>
+      <button data-screen="chat">◌<span>Chat</span></button>
+      <button data-screen="settings">⚙<span>Settings</span></button>
     </nav>
   </div>
 
-  <script src="app.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
