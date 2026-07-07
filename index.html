@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#f7f8ff" />
+  <meta name="theme-color" content="#f8f9ff" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Moodly" />
@@ -13,20 +13,24 @@
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div class="app-frame">
+  <div class="phone">
     <div class="status-bar">
       <span>9:41</span>
       <span>5G 🔋</span>
     </div>
 
     <div class="screens">
+
+      <!-- TODAY -->
       <main class="screen active" id="today">
-        <header class="page-header">
-          <img src="./icons/icon-192.png" class="mini-logo" alt="Moodly" />
-          <button class="icon-btn" data-screen-jump="calendar" type="button">▣</button>
+        <header class="topbar">
+          <img src="./icons/icon-192.png" class="brand-icon" alt="Moodly" />
+          <button class="calendar-button" data-screen-jump="calendar" type="button" aria-label="Open calendar">
+            <span></span>
+          </button>
         </header>
 
-        <section class="hero-title">
+        <section class="title-block">
           <h1 data-i18n="todayTitle">Today</h1>
           <p data-i18n="todaySubtitle">How are you feeling today?</p>
         </section>
@@ -34,36 +38,55 @@
         <section class="card mood-card">
           <h2 data-i18n="moodQuestion">How are you feeling?</h2>
           <p data-i18n="moodDesc">Choose the mood that best describes you right now.</p>
+
           <div class="mood-grid">
-            <button class="mood-btn" data-mood-key="great" type="button"><span>😊</span><small data-i18n="moodGreat">Great</small></button>
-            <button class="mood-btn" data-mood-key="happy" type="button"><span>🙂</span><small data-i18n="moodGood">Good</small></button>
-            <button class="mood-btn selected" data-mood-key="calm" type="button"><span>😐</span><small data-i18n="moodOkay">Okay</small></button>
-            <button class="mood-btn" data-mood-key="low" type="button"><span>😟</span><small data-i18n="moodLow">Low</small></button>
-            <button class="mood-btn" data-mood-key="awful" type="button"><span>😣</span><small data-i18n="moodAwful">Awful</small></button>
+            <button class="mood-option" data-mood-key="great" type="button">
+              <span class="face">😊</span>
+              <small data-i18n="moodGreat">Great</small>
+            </button>
+            <button class="mood-option" data-mood-key="happy" type="button">
+              <span class="face">🙂</span>
+              <small data-i18n="moodGood">Good</small>
+            </button>
+            <button class="mood-option selected" data-mood-key="calm" type="button">
+              <span class="face">😐</span>
+              <small data-i18n="moodOkay">Okay</small>
+            </button>
+            <button class="mood-option" data-mood-key="low" type="button">
+              <span class="face">😟</span>
+              <small data-i18n="moodLow">Low</small>
+            </button>
+            <button class="mood-option" data-mood-key="awful" type="button">
+              <span class="face">😣</span>
+              <small data-i18n="moodAwful">Awful</small>
+            </button>
           </div>
         </section>
 
         <section class="card note-card">
-          <div class="section-label">
+          <div class="section-title">
             <h2 data-i18n="noteTitle">Add a quick note</h2>
             <span data-i18n="optional">(optional)</span>
           </div>
-          <textarea id="moodInput" maxlength="160" data-i18n-placeholder="notePlaceholder" placeholder="What's on your mind?"></textarea>
-          <div class="counter"><span id="charCount">0</span>/160</div>
+          <div class="textarea-wrap">
+            <textarea id="moodInput" maxlength="160" data-i18n-placeholder="notePlaceholder" placeholder="What's on your mind?"></textarea>
+            <small><span id="charCount">0</span>/160</small>
+          </div>
           <button id="checkInBtn" class="primary" type="button" data-i18n="checkIn">Check In</button>
         </section>
 
-        <section class="card encouragement">
+        <section class="card encouragement-card">
           <div>
             <h2 data-i18n="encouragementTitle">Daily encouragement</h2>
             <p id="todayEncouragement">Small steps today, big changes tomorrow.</p>
           </div>
-          <div class="mascot">
+          <div class="mini-mascot">
             <span>⌣</span>
+            <i></i>
           </div>
         </section>
 
-        <section class="card records">
+        <section class="card records-card">
           <div class="section-head">
             <h2 data-i18n="todayRecords">Today records</h2>
             <span id="todayCount">0</span>
@@ -72,13 +95,14 @@
         </section>
       </main>
 
+      <!-- AI REFLECTION -->
       <main class="screen" id="reflection">
-        <header class="page-header">
-          <button class="back-btn" data-screen-jump="today" type="button">‹</button>
-          <img src="./icons/icon-192.png" class="mini-logo right" alt="Moodly" />
+        <header class="topbar">
+          <button class="back-button" data-screen-jump="today" type="button">‹</button>
+          <img src="./icons/icon-192.png" class="brand-icon" alt="Moodly" />
         </header>
 
-        <section class="hero-title compact-title">
+        <section class="title-block compact">
           <h1 data-i18n="reflectionTitle">AI Reflection</h1>
           <p data-i18n="reflectionSubtitle">Here's your reflection based on your check-ins.</p>
         </section>
@@ -88,44 +112,52 @@
             <h2 id="reflectionHeadline">You've been feeling mostly calm this week.</h2>
             <p id="reflectionBody">You're showing up for yourself, and that matters.</p>
           </div>
-          <div class="mascot big"><span>⌣</span></div>
+          <div class="mini-mascot large">
+            <span>⌣</span>
+            <i></i>
+          </div>
         </section>
 
         <section class="card suggestion-card">
           <h2 data-i18n="tryTitle">You might try</h2>
-          <div id="suggestionList" class="suggestions">
-            <div>🌿 <span data-i18n="tryWalk">Take a 5-minute walk to clear your mind.</span></div>
-            <div>💜 <span data-i18n="tryWrite">Write down three things you’re grateful for.</span></div>
+          <div class="suggestion-item">
+            <span>🌿</span>
+            <p data-i18n="tryWalk">Take a 5-minute walk to clear your mind.</p>
+          </div>
+          <div class="suggestion-item">
+            <span>💜</span>
+            <p data-i18n="tryWrite">Write down three things you’re grateful for.</p>
           </div>
         </section>
 
         <button class="primary" data-screen-jump="chat" type="button" data-i18n="continueChat">Continue Chat</button>
       </main>
 
+      <!-- INSIGHTS -->
       <main class="screen" id="insights">
-        <header class="page-header">
-          <img src="./icons/icon-192.png" class="mini-logo" alt="Moodly" />
+        <header class="topbar">
+          <img src="./icons/icon-192.png" class="brand-icon" alt="Moodly" />
         </header>
 
-        <section class="hero-title compact-title">
+        <section class="title-block compact">
           <h1 data-i18n="insightsTitle">Insights</h1>
           <p data-i18n="insightsSubtitle">Your mood this week</p>
         </section>
 
         <section class="card chart-card">
           <div class="legend">
-            <span><i class="great-dot"></i>Great</span>
-            <span><i class="good-dot"></i>Good</span>
-            <span><i class="okay-dot"></i>Okay</span>
-            <span><i class="low-dot"></i>Low</span>
+            <span><i class="dot great"></i>Great</span>
+            <span><i class="dot good"></i>Good</span>
+            <span><i class="dot okay"></i>Okay</span>
+            <span><i class="dot low"></i>Low</span>
           </div>
           <svg id="moodChart" class="chart" viewBox="0 0 320 170"></svg>
           <div class="week-labels" id="weekLabels"></div>
         </section>
 
-        <section class="card">
+        <section class="card summary-card">
           <h2>AI Summary</h2>
-          <p id="weeklySummary"></p>
+          <p id="weeklySummary">You had a mix of ups and downs, but you're trending positively. Keep going! 💜</p>
         </section>
 
         <section class="card">
@@ -135,16 +167,17 @@
 
         <section class="card">
           <h2 data-i18n="localizedTitle">Localized expression</h2>
-          <p id="localizedExpression" class="muted"></p>
+          <p id="localizedExpression" class="soft-text">I feel emotionally aware today, and I’m learning to understand myself with more kindness.</p>
         </section>
       </main>
 
+      <!-- CALENDAR -->
       <main class="screen" id="calendar">
-        <header class="page-header">
-          <img src="./icons/icon-192.png" class="mini-logo" alt="Moodly" />
+        <header class="topbar">
+          <img src="./icons/icon-192.png" class="brand-icon" alt="Moodly" />
         </header>
 
-        <section class="hero-title compact-title">
+        <section class="title-block compact">
           <h1 data-i18n="calendarTitle">Calendar</h1>
           <p data-i18n="calendarSubtitle">Review your mood history</p>
         </section>
@@ -158,20 +191,21 @@
           <div id="calendarGrid" class="calendar-grid"></div>
         </section>
 
-        <section class="card">
-          <h2 data-i18n="recentTitle">Recent records</h2>
+        <section class="card selected-day-card">
+          <h2 id="selectedDayTitle">Today</h2>
           <div id="recentList" class="record-list"></div>
         </section>
       </main>
 
+      <!-- CHAT -->
       <main class="screen chat-screen" id="chat">
-        <header class="page-header">
-          <img src="./icons/icon-192.png" class="mini-logo" alt="Moodly" />
-          <button class="icon-btn" type="button">•••</button>
+        <header class="topbar">
+          <img src="./icons/icon-192.png" class="brand-icon" alt="Moodly" />
+          <button class="more-button" type="button">•••</button>
         </header>
 
-        <section class="hero-title compact-title">
-          <h1>Chat</h1>
+        <section class="title-block compact">
+          <h1 data-i18n="chatTitle">Chat with Moodly</h1>
           <p data-i18n="chatSubtitle">Talk with Moodly</p>
         </section>
 
@@ -180,12 +214,13 @@
         </section>
       </main>
 
+      <!-- SETTINGS -->
       <main class="screen" id="settings">
-        <header class="page-header">
-          <img src="./icons/icon-192.png" class="mini-logo" alt="Moodly" />
+        <header class="topbar">
+          <img src="./icons/icon-192.png" class="brand-icon" alt="Moodly" />
         </header>
 
-        <section class="hero-title compact-title">
+        <section class="title-block compact">
           <h1>Settings</h1>
           <p data-i18n="settingsSubtitle">Customize your experience</p>
         </section>
@@ -199,7 +234,7 @@
           <span>›</span>
         </section>
 
-        <section class="card list">
+        <section class="card list-card">
           <div class="row"><span data-i18n="reminders">Reminders</span><b>09:00 PM</b></div>
           <div class="row"><span data-i18n="theme">Theme</span><b data-i18n="light">Light</b></div>
           <div class="row language-row">
@@ -211,7 +246,7 @@
           </div>
         </section>
 
-        <section class="card list">
+        <section class="card list-card">
           <button id="exportBtn" class="row action-row" type="button"><span data-i18n="exportData">Export Data</span><b>›</b></button>
           <div class="row"><span data-i18n="privacy">Privacy</span><b data-i18n="localOnly">Local</b></div>
           <button id="deleteBtn" class="row action-row danger" type="button"><span data-i18n="deleteData">Delete All Data</span><b>›</b></button>
@@ -233,6 +268,6 @@
     </nav>
   </div>
 
-  <script src="./app.js?v=12"></script>
+  <script src="./app.js?v=14"></script>
 </body>
 </html>

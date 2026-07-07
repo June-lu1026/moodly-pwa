@@ -1,9 +1,9 @@
-# Moodly AI Design Match PWA v12
+# Moodly AI Design Match Final v14
 
-按你确认的简化设计图重做：
+这版按你确认的 UI 设计图重构：
 
-- 高还原浅色高级 App UI
-- M + smile 图标使用真实 PNG
+- 浅色高级感 App UI
+- M + smile 图标全部使用真实 PNG
 - Today / AI Reflection / Insights / Calendar / Chat / Settings
 - Check In 后自动进入 AI Reflection
 - 心情可直接记录，文本可选
@@ -14,7 +14,7 @@
 
 ## 上传 GitHub
 
-把这些文件上传到仓库根目录：
+把所有文件上传到仓库根目录：
 
 - index.html
 - style.css
@@ -30,7 +30,7 @@
 
 const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
 
-替换为你的 Gemini API Key。
+替换成你的 Gemini API Key。
 
 ## Render
 
@@ -40,4 +40,4 @@ Publish Directory: .
 ## 防缓存
 
 部署后访问：
-https://moodly-pwa.onrender.com?v=12
+https://moodly-pwa.onrender.com?v=14
