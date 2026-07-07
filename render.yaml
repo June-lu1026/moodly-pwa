@@ -1,5 +1,5 @@
 services:
   - type: web
-    name: moodly-ai-simplified
+    name: moodly-ai-design-match
     env: static
     staticPublishPath: .

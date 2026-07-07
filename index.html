@@ -12,9 +12,8 @@
   <link rel="apple-touch-icon" href="./icons/icon-192.png" />
   <link rel="stylesheet" href="./style.css" />
 </head>
-
 <body>
-  <div class="phone-app">
+  <div class="app-frame">
     <div class="status-bar">
       <span>9:41</span>
       <span>5G 🔋</span>
@@ -22,47 +21,51 @@
 
     <div class="screens">
       <main class="screen active" id="today">
-        <header class="top">
-          <div>
-            <div class="tiny-logo moodly-logo">
-              <span class="logo-letter">M</span>
-              <span class="logo-smile"></span>
-            </div>
-            <h1 data-i18n="todayTitle">Today</h1>
-            <p data-i18n="todaySubtitle">你好，今天想记录一下心情吗？</p>
-          </div>
-          <button class="header-icon" type="button" data-screen-jump="calendar">◷</button>
+        <header class="page-header">
+          <img src="./icons/icon-192.png" class="mini-logo" alt="Moodly" />
+          <button class="icon-btn" data-screen-jump="calendar" type="button">▣</button>
         </header>
 
+        <section class="hero-title">
+          <h1 data-i18n="todayTitle">Today</h1>
+          <p data-i18n="todaySubtitle">How are you feeling today?</p>
+        </section>
+
         <section class="card mood-card">
-          <h2 data-i18n="currentMood">当前心情</h2>
-          <p class="hint" data-i18n="chooseMood">选择最接近此刻的感受</p>
-          <div class="mood-row">
-            <button type="button" data-mood-key="great">😊<span data-i18n="moodGreat">很好</span></button>
-            <button type="button" data-mood-key="happy">🙂<span data-i18n="moodHappy">开心</span></button>
-            <button type="button" data-mood-key="calm" class="selected">😐<span data-i18n="moodCalm">平静</span></button>
-            <button type="button" data-mood-key="low">😟<span data-i18n="moodLow">低落</span></button>
-            <button type="button" data-mood-key="awful">😣<span data-i18n="moodAwful">很糟糕</span></button>
+          <h2 data-i18n="moodQuestion">How are you feeling?</h2>
+          <p data-i18n="moodDesc">Choose the mood that best describes you right now.</p>
+          <div class="mood-grid">
+            <button class="mood-btn" data-mood-key="great" type="button"><span>😊</span><small data-i18n="moodGreat">Great</small></button>
+            <button class="mood-btn" data-mood-key="happy" type="button"><span>🙂</span><small data-i18n="moodGood">Good</small></button>
+            <button class="mood-btn selected" data-mood-key="calm" type="button"><span>😐</span><small data-i18n="moodOkay">Okay</small></button>
+            <button class="mood-btn" data-mood-key="low" type="button"><span>😟</span><small data-i18n="moodLow">Low</small></button>
+            <button class="mood-btn" data-mood-key="awful" type="button"><span>😣</span><small data-i18n="moodAwful">Awful</small></button>
           </div>
         </section>
 
-        <section class="card check-card">
-          <h2 data-i18n="quickNote">快速记录（可选）</h2>
-          <textarea id="moodInput" maxlength="160" data-i18n-placeholder="inputPlaceholder" placeholder="可以不写，直接选择心情后点击 Check In"></textarea>
-          <button id="startBtn" class="primary" type="button" data-i18n="checkIn">Check In</button>
+        <section class="card note-card">
+          <div class="section-label">
+            <h2 data-i18n="noteTitle">Add a quick note</h2>
+            <span data-i18n="optional">(optional)</span>
+          </div>
+          <textarea id="moodInput" maxlength="160" data-i18n-placeholder="notePlaceholder" placeholder="What's on your mind?"></textarea>
+          <div class="counter"><span id="charCount">0</span>/160</div>
+          <button id="checkInBtn" class="primary" type="button" data-i18n="checkIn">Check In</button>
         </section>
 
-        <section class="card encouragement-card">
+        <section class="card encouragement">
           <div>
-            <h2 data-i18n="dailyEncouragement">Daily encouragement</h2>
-            <p id="aiOutput" data-i18n="aiWaiting">Small steps today, big changes tomorrow.</p>
+            <h2 data-i18n="encouragementTitle">Daily encouragement</h2>
+            <p id="todayEncouragement">Small steps today, big changes tomorrow.</p>
           </div>
-          <div class="soft-mascot">⌣</div>
+          <div class="mascot">
+            <span>⌣</span>
+          </div>
         </section>
 
-        <section class="card">
+        <section class="card records">
           <div class="section-head">
-            <h2 data-i18n="todayRecords">今日记录</h2>
+            <h2 data-i18n="todayRecords">Today records</h2>
             <span id="todayCount">0</span>
           </div>
           <div id="todayList" class="record-list"></div>
@@ -70,143 +73,137 @@
       </main>
 
       <main class="screen" id="reflection">
-        <header class="top compact">
-          <div>
-            <div class="tiny-logo moodly-logo">
-              <span class="logo-letter">M</span>
-              <span class="logo-smile"></span>
-            </div>
-            <h1 data-i18n="reflectionTitle">AI Reflection</h1>
-            <p data-i18n="reflectionSubtitle">基于你的记录，给你温柔回应</p>
-          </div>
+        <header class="page-header">
+          <button class="back-btn" data-screen-jump="today" type="button">‹</button>
+          <img src="./icons/icon-192.png" class="mini-logo right" alt="Moodly" />
         </header>
 
-        <section class="card reflection-hero">
-          <div>
-            <h2 id="reflectionMood">You handled today with quiet strength.</h2>
-            <p id="reflectionText">你已经开始照顾自己的感受了，这很重要。</p>
-          </div>
-          <div class="soft-mascot large">⌣</div>
+        <section class="hero-title compact-title">
+          <h1 data-i18n="reflectionTitle">AI Reflection</h1>
+          <p data-i18n="reflectionSubtitle">Here's your reflection based on your check-ins.</p>
         </section>
 
-        <section class="card">
-          <h2 data-i18n="youMightTry">You might try</h2>
-          <div class="suggestion-list">
+        <section class="card reflection-card">
+          <div>
+            <h2 id="reflectionHeadline">You've been feeling mostly calm this week.</h2>
+            <p id="reflectionBody">You're showing up for yourself, and that matters.</p>
+          </div>
+          <div class="mascot big"><span>⌣</span></div>
+        </section>
+
+        <section class="card suggestion-card">
+          <h2 data-i18n="tryTitle">You might try</h2>
+          <div id="suggestionList" class="suggestions">
             <div>🌿 <span data-i18n="tryWalk">Take a 5-minute walk to clear your mind.</span></div>
             <div>💜 <span data-i18n="tryWrite">Write down three things you’re grateful for.</span></div>
           </div>
         </section>
 
-        <button class="primary wide" type="button" data-screen-jump="chat" data-i18n="continueChat">继续聊天</button>
+        <button class="primary" data-screen-jump="chat" type="button" data-i18n="continueChat">Continue Chat</button>
       </main>
 
       <main class="screen" id="insights">
-        <header class="top compact">
-          <div>
-            <div class="tiny-logo moodly-logo">
-              <span class="logo-letter">M</span>
-              <span class="logo-smile"></span>
-            </div>
-            <h1 data-i18n="insightsTitle">Insights</h1>
-            <p data-i18n="insightsSubtitle">看见你的情绪变化</p>
-          </div>
+        <header class="page-header">
+          <img src="./icons/icon-192.png" class="mini-logo" alt="Moodly" />
         </header>
 
-        <section class="card">
-          <div class="section-head">
-            <h2 data-i18n="weeklyTrend">本周情绪趋势</h2>
-            <span data-i18n="thisWeek">本周</span>
+        <section class="hero-title compact-title">
+          <h1 data-i18n="insightsTitle">Insights</h1>
+          <p data-i18n="insightsSubtitle">Your mood this week</p>
+        </section>
+
+        <section class="card chart-card">
+          <div class="legend">
+            <span><i class="great-dot"></i>Great</span>
+            <span><i class="good-dot"></i>Good</span>
+            <span><i class="okay-dot"></i>Okay</span>
+            <span><i class="low-dot"></i>Low</span>
           </div>
-          <svg id="moodChart" class="chart" viewBox="0 0 320 160" aria-label="mood trend chart"></svg>
+          <svg id="moodChart" class="chart" viewBox="0 0 320 170"></svg>
           <div class="week-labels" id="weekLabels"></div>
         </section>
 
         <section class="card">
           <h2>AI Summary</h2>
-          <p id="weeklySummary" class="summary-text"></p>
+          <p id="weeklySummary"></p>
         </section>
 
         <section class="card">
-          <h2 data-i18n="triggers">情绪触发点</h2>
-          <div class="chips" id="triggerChips"></div>
+          <h2 data-i18n="triggerTitle">Top triggers</h2>
+          <div id="triggerChips" class="chips"></div>
         </section>
 
         <section class="card">
-          <h2 data-i18n="localizationTitle">本地化表达</h2>
-          <p class="hint" data-i18n="localizationDesc">把今天的情绪转成更自然的英文表达。</p>
-          <div id="localizedExpression" class="ai-output"></div>
+          <h2 data-i18n="localizedTitle">Localized expression</h2>
+          <p id="localizedExpression" class="muted"></p>
         </section>
       </main>
 
       <main class="screen" id="calendar">
-        <header class="top compact">
-          <div>
-            <div class="tiny-logo moodly-logo">
-              <span class="logo-letter">M</span>
-              <span class="logo-smile"></span>
-            </div>
-            <h1 data-i18n="calendarTitle">Calendar</h1>
-            <p data-i18n="calendarSubtitle">查看你的心情记录</p>
-          </div>
+        <header class="page-header">
+          <img src="./icons/icon-192.png" class="mini-logo" alt="Moodly" />
         </header>
 
-        <section class="card">
-          <div class="section-head">
-            <h2 id="calendarMonth">Mood Calendar</h2>
-            <span data-i18n="thisMonth">本月</span>
+        <section class="hero-title compact-title">
+          <h1 data-i18n="calendarTitle">Calendar</h1>
+          <p data-i18n="calendarSubtitle">Review your mood history</p>
+        </section>
+
+        <section class="card calendar-card">
+          <div class="calendar-head">
+            <button type="button">‹</button>
+            <h2 id="calendarMonth">June 2026</h2>
+            <button type="button">›</button>
           </div>
-          <div class="calendar-grid" id="calendarGrid"></div>
+          <div id="calendarGrid" class="calendar-grid"></div>
         </section>
 
         <section class="card">
-          <h2 data-i18n="recentRecord">最近记录</h2>
+          <h2 data-i18n="recentTitle">Recent records</h2>
           <div id="recentList" class="record-list"></div>
         </section>
       </main>
 
       <main class="screen chat-screen" id="chat">
-        <header class="top compact">
-          <div>
-            <div class="tiny-logo moodly-logo">
-              <span class="logo-letter">M</span>
-              <span class="logo-smile"></span>
-            </div>
-            <h1>Chat</h1>
-            <p data-i18n="chatSubtitle">和 Moodly 聊聊</p>
-          </div>
+        <header class="page-header">
+          <img src="./icons/icon-192.png" class="mini-logo" alt="Moodly" />
+          <button class="icon-btn" type="button">•••</button>
         </header>
 
-        <section class="card chat-card" id="chatMessages">
-          <div class="bubble left" data-i18n="chat1">Hi，我在这里。你现在感觉怎么样？</div>
+        <section class="hero-title compact-title">
+          <h1>Chat</h1>
+          <p data-i18n="chatSubtitle">Talk with Moodly</p>
+        </section>
+
+        <section id="chatMessages" class="chat-area">
+          <div class="bubble left" data-i18n="chatHello">Hi, how are you feeling today?</div>
         </section>
       </main>
 
       <main class="screen" id="settings">
-        <header class="top compact">
-          <div>
-            <div class="tiny-logo moodly-logo">
-              <span class="logo-letter">M</span>
-              <span class="logo-smile"></span>
-            </div>
-            <h1>Settings</h1>
-            <p data-i18n="settingsSubtitle">管理你的 Moodly</p>
-          </div>
+        <header class="page-header">
+          <img src="./icons/icon-192.png" class="mini-logo" alt="Moodly" />
         </header>
 
-        <section class="card profile-card">
+        <section class="hero-title compact-title">
+          <h1>Settings</h1>
+          <p data-i18n="settingsSubtitle">Customize your experience</p>
+        </section>
+
+        <section class="card profile-row">
           <div class="avatar">M</div>
           <div>
             <h2>Moodly User</h2>
-            <p data-i18n="userSubtitle">让 Moodly 更懂你 💜</p>
+            <p data-i18n="profileSub">Let Moodly understand you better 💜</p>
           </div>
           <span>›</span>
         </section>
 
         <section class="card list">
-          <div class="row"><span data-i18n="reminders">🔔 Reminders</span><b>09:00 PM</b></div>
-          <div class="row"><span data-i18n="theme">🌙 Theme</span><b data-i18n="light">Light</b></div>
+          <div class="row"><span data-i18n="reminders">Reminders</span><b>09:00 PM</b></div>
+          <div class="row"><span data-i18n="theme">Theme</span><b data-i18n="light">Light</b></div>
           <div class="row language-row">
-            <span data-i18n="language">🌐 Language</span>
+            <span data-i18n="language">Language</span>
             <div class="lang-switch">
               <button id="langEN" type="button">EN</button>
               <button id="langZH" type="button">中文</button>
@@ -215,16 +212,16 @@
         </section>
 
         <section class="card list">
-          <button class="row action-row" id="exportBtn" type="button"><span data-i18n="exportData">⬇️ Export Data</span><b>›</b></button>
-          <div class="row"><span data-i18n="privacy">🛡 Privacy First</span><b data-i18n="localOnly">Local</b></div>
-          <button class="row action-row danger" id="deleteBtn" type="button"><span data-i18n="deleteData">🗑 Delete All Data</span><b>›</b></button>
+          <button id="exportBtn" class="row action-row" type="button"><span data-i18n="exportData">Export Data</span><b>›</b></button>
+          <div class="row"><span data-i18n="privacy">Privacy</span><b data-i18n="localOnly">Local</b></div>
+          <button id="deleteBtn" class="row action-row danger" type="button"><span data-i18n="deleteData">Delete All Data</span><b>›</b></button>
         </section>
       </main>
     </div>
 
-    <section class="message-box" id="messageBox">
-      <input id="chatInput" data-i18n-placeholder="messagePlaceholder" placeholder="输入你的消息..." />
-      <button type="button" id="chatSend">➤</button>
+    <section id="messageBox" class="message-box">
+      <input id="chatInput" data-i18n-placeholder="messagePlaceholder" placeholder="Type a message..." />
+      <button id="chatSend" type="button">➤</button>
     </section>
 
     <nav class="tabbar">
@@ -236,6 +233,6 @@
     </nav>
   </div>
 
-  <script src="./app.js?v=11"></script>
+  <script src="./app.js?v=12"></script>
 </body>
 </html>
