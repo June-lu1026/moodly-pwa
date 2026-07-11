@@ -1,47 +1,34 @@
-const moods=[...document.querySelectorAll('.mood-card')];
+const qs=(s,r=document)=>r.querySelector(s),qsa=(s,r=document)=>[...r.querySelectorAll(s)];
 let selectedMood='Okay';
-const input=document.getElementById('noteInput');
-const count=document.getElementById('count');
-const toast=document.getElementById('toast');
-const todayScreen=document.getElementById('todayScreen');
-const reflectionScreen=document.getElementById('reflectionScreen');
-const tabButtons=[...document.querySelectorAll('.tabbar button')];
-
-moods.forEach(btn=>btn.addEventListener('click',()=>{
-  moods.forEach(x=>{x.classList.remove('selected');x.setAttribute('aria-pressed','false')});
-  btn.classList.add('selected');btn.setAttribute('aria-pressed','true');selectedMood=btn.dataset.mood;
-}));
-input.addEventListener('input',()=>count.textContent=input.value.length);
-
-function showToast(message){toast.textContent=message;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1100)}
-function setActiveTab(name){tabButtons.forEach(btn=>btn.classList.toggle('active',btn.dataset.screen===name))}
-function showScreen(name){
-  todayScreen.classList.toggle('active',name==='today');
-  reflectionScreen.classList.toggle('active',name==='reflection');
-  setActiveTab(name==='reflection'?'today':name);
-}
-function updateReflection(){
+qsa('.tabbar button').forEach(btn=>btn.addEventListener('click',()=>show(btn.dataset.screen)));
+qsa('[data-open]').forEach(btn=>btn.addEventListener('click',()=>show(btn.dataset.open)));
+function show(id){qsa('.screen').forEach(s=>s.classList.toggle('active',s.id===id));qsa('.tabbar button').forEach(b=>b.classList.toggle('active',b.dataset.screen===id));qs('#composer').classList.toggle('show',id==='chat');}
+qsa('.mood').forEach(btn=>btn.addEventListener('click',()=>{qsa('.mood').forEach(x=>x.classList.remove('active'));btn.classList.add('active');selectedMood=btn.dataset.mood;}));
+const note=qs('#noteInput');note.addEventListener('input',()=>qs('#count').textContent=note.value.length);
+qs('#checkBtn').addEventListener('click',()=>{
+  const map={Great:'mint',Good:'blue',Okay:'yellow',Low:'orange',Awful:'pink'};
   const copy={
-    Great:['Hold onto this lightness.','Your energy feels open and positive today. Notice what supported this feeling so you can return to it later.','Your mood is bright today. Capture one detail that made the day feel good.'],
-    Good:['A steady day is worth celebrating.','You seem grounded today. Small moments of ease are often signs that your routines are supporting you.','Your mood feels balanced. Protect it with one calm, familiar activity.'],
-    Okay:["You’re doing better than you think.",'Not every day needs to feel perfect. Showing up, noticing how you feel, and giving yourself space already counts as progress.','Your mood is steady today. A calm evening routine could help you protect that balance.'],
-    Low:['Be gentle with yourself today.','A low day does not define your direction. You do not need to solve everything right now—one kind action is enough.','Your energy feels lower today. Reducing pressure may help more than pushing harder.'],
-    Awful:['You do not have to carry this alone.','Today may feel heavy. Naming it honestly is already a brave step. Focus only on what helps you feel safe and supported.','Your check-in shows a difficult moment. Consider reaching out to someone you trust.']
-  }[selectedMood];
-  document.getElementById('reflectionTitle').textContent=copy[0];
-  document.getElementById('reflectionText').textContent=copy[1];
-  document.getElementById('noticedText').textContent=copy[2];
-}
-
-document.getElementById('checkinButton').addEventListener('click',()=>{
-  localStorage.setItem('moodly-last-checkin',JSON.stringify({mood:selectedMood,note:input.value,time:new Date().toISOString()}));
-  updateReflection();showToast(`${selectedMood} check-in saved`);setTimeout(()=>showScreen('reflection'),380);
+    Great:{title:"You've been feeling great today.",body:"Joy deserves to be noticed. Take a moment to appreciate what helped you feel lighter today."},
+    Good:{title:"You've been feeling good today.",body:"You seem grounded and positive. Hold on to the small moments that helped you feel this way."},
+    Okay:{title:"You've been feeling okay today.",body:"Calm is a meaningful state too. You don't need to push hard every day. Naming what you feel is already a caring step."},
+    Low:{title:"You've been feeling low today.",body:"A difficult day does not define you. Be gentle with yourself and focus on one small thing you need right now."},
+    Awful:{title:"Today has felt especially hard.",body:"You do not have to solve everything at once. Pause, breathe, and reach out to someone you trust when you can."}
+  };
+  const art=document.createElement('article');
+  art.innerHTML=`<span class="face ${map[selectedMood]} small">${selectedMood==='Okay'?'—':selectedMood==='Low'||selectedMood==='Awful'?'⌢':'☺'}</span><div><b>${selectedMood}</b><small>Just now</small><p>${note.value||'A moment of self-awareness.'}</p></div>`;
+  qs('#records').prepend(art);
+  const reflection=copy[selectedMood];
+  qs('.reflection-card h3').textContent=reflection.title;
+  qs('.reflection-card p').textContent=reflection.body;
+  const b=qs('#checkBtn');
+  b.innerHTML='Checked In <i>✓</i>';
+  note.value='';
+  qs('#count').textContent='0';
+  setTimeout(()=>{
+    b.innerHTML='Check In <i>✦</i>';
+    show('reflection');
+  },450);
 });
-document.getElementById('reflectionCard').addEventListener('click',()=>{updateReflection();showScreen('reflection')});
-document.getElementById('reflectionBack').addEventListener('click',()=>showScreen('today'));
-document.getElementById('calendarButton').addEventListener('click',()=>showToast('Calendar is the next milestone'));
-tabButtons.forEach(btn=>btn.addEventListener('click',()=>{
-  const name=btn.dataset.screen;
-  if(name==='today') showScreen('today'); else showToast(`${name[0].toUpperCase()+name.slice(1)} is the next milestone`);
-}));
-document.querySelectorAll('.suggestion-card').forEach(btn=>btn.addEventListener('click',()=>showToast('Suggestion saved')));
+const cal=qs('#calendarGrid');['SUN','MON','TUE','WED','THU','FRI','SAT'].forEach(x=>cal.insertAdjacentHTML('beforeend',`<b>${x}</b>`));for(let i=1;i<=31;i++){const c=i===17?'selected':([2,3,5,6,9,11,13,16,20,24].includes(i)?'dot':'');cal.insertAdjacentHTML('beforeend',`<i class="${c}">${i}</i>`)}
+qs('#sendBtn').addEventListener('click',send);qs('#chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')send()});function send(){const input=qs('#chatInput');if(!input.value.trim())return;qs('#messages').insertAdjacentHTML('beforeend',`<div class="msg user"><p>${input.value.replace(/[<>]/g,'')}</p></div>`);input.value='';setTimeout(()=>qs('#messages').insertAdjacentHTML('beforeend',`<div class="msg bot"><img src="./icons/icon-192.png"><p>Thank you for sharing that. Let's take one gentle step at a time.</p></div>`),500)}
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js');

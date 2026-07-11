@@ -1,14 +1,11 @@
-Moodly Competition Edition V2
+# Moodly AI Competition Demo
 
-Completed screens:
-- Today
-- AI Reflection
+Open `index.html` directly for preview, or deploy the folder to Render/Netlify/Vercel as a static site.
 
-Demo flow:
-1. Select a mood on Today.
-2. Add an optional note.
-3. Press Check In.
-4. The app saves the check-in locally and opens a personalized AI Reflection.
-5. Use the back button to return to Today.
-
-Open index.html in a modern browser.
+Included:
+- High-fidelity mobile UI
+- Today, Calendar, Insights, AI Reflection, Chat, Settings
+- Mood check-in and recent records
+- Chat interaction
+- PWA manifest and service worker
+- Unified Moodly logo assets
