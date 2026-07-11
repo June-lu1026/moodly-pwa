@@ -1,26 +1,31 @@
-# Moodly AI Final PWA v16
+# Moodly Final Design Match v19
 
-这版基于你确认的最终设计稿制作：
+这是按最终母版重做的 Moodly AI PWA 代码包。
 
+## 本版重点
+- 重新生成了带圆形光晕的 M + smile logo
 - Today / AI Reflection / Insights / Calendar / Chat / Settings
-- 使用你确认的 Moodly M + smile 渐变 logo
-- PWA 安装图标已经写入 icons/icon-192.png 和 icons/icon-512.png
+- 统一浅粉紫、白色卡片、轻阴影、大圆角风格
 - Check In 后进入 AI Reflection
-- Calendar / Insights / Chat / Settings 基础交互保留
-- EN / 中文切换保留
-- 支持 GitHub + Render 静态部署
+- Chat 基础交互
+- EN / 中文切换
+- PWA 安装支持
+- Gemini API 接口保留
 
 ## 上传 GitHub
 
-把压缩包里的文件全部上传到仓库根目录：
+解压后，把里面所有文件上传到仓库根目录：
 
-- index.html
-- style.css
-- app.js
-- manifest.webmanifest
-- service-worker.js
-- render.yaml
 - icons/
+- README.md
+- app.js
+- index.html
+- manifest.webmanifest
+- render.yaml
+- service-worker.js
+- style.css
+
+不要上传 zip 文件。
 
 ## Gemini API
 
@@ -28,15 +33,14 @@
 
 const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
 
-把 YOUR_GEMINI_API_KEY 替换成你的 Gemini API Key。
+替换成你的 Gemini API Key。
 
-## Render 部署
+## Render
 
-- Service type: Static Site
-- Publish Directory: .
-- Build Command: 留空
-
-## 防缓存访问
+Static Site
+Publish Directory: .
+Build Command: 留空
 
 部署后打开：
-https://moodly-pwa.onrender.com?v=16
+
+https://moodly-pwa.onrender.com?v=19

@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: moodly-final-design-match-v19
+    env: static
+    staticPublishPath: .
