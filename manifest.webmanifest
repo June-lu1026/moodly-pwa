@@ -1,17 +1,16 @@
 {
   "name": "Moodly AI",
   "short_name": "Moodly",
-  "description": "Moodly AI gentle emotional companion PWA",
+  "description": "Moodly AI emotional companion PWA",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
   "display_override": [
-    "window-controls-overlay",
     "standalone",
     "minimal-ui"
   ],
-  "background_color": "#f8f9ff",
-  "theme_color": "#8b7cff",
+  "background_color": "#fbf8ff",
+  "theme_color": "#8b72f5",
   "orientation": "portrait",
   "icons": [
     {
