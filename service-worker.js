@@ -1,9 +1,9 @@
-const CACHE_NAME = "moodly-final-pixel-match-v20";
+const CACHE_NAME = "moodly-strict-ui-match-v22";
 const ASSETS = [
   "./",
   "./index.html",
   "./style.css",
-  "./app.js?v=20",
+  "./app.js?v=22",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png"

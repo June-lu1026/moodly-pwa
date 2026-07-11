@@ -1,5 +1,5 @@
 const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
-const STORE_KEY = "moodly_final_pixel_match_v20";
+const STORE_KEY = "moodly_strict_ui_match_v22";
 let lang = localStorage.getItem("moodly_lang") || "en";
 let selectedMood = "okay";
 
@@ -126,6 +126,6 @@ function init(){
 }
 
 if("serviceWorker" in navigator){
-  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js?v=20").catch(()=>{}));
+  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js?v=22").catch(()=>{}));
 }
 document.addEventListener("DOMContentLoaded", init);

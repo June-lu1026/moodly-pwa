@@ -43,11 +43,11 @@
         <section class="card mood-card">
           <h2 data-i18n="moodTitle">How are you feeling?</h2>
           <div class="moods">
-            <button class="mood" data-mood="great" type="button"><span class="mood-face face-great">😊</span><small data-i18n="great">Great</small></button>
-            <button class="mood" data-mood="good" type="button"><span class="mood-face face-good">🙂</span><small data-i18n="good">Good</small></button>
-            <button class="mood selected" data-mood="okay" type="button"><span class="mood-face face-okay">😐</span><small data-i18n="okay">Okay</small></button>
-            <button class="mood" data-mood="low" type="button"><span class="mood-face face-low">🙁</span><small data-i18n="low">Low</small></button>
-            <button class="mood" data-mood="awful" type="button"><span class="mood-face face-awful">😣</span><small data-i18n="awful">Awful</small></button>
+            <button class="mood" data-mood="great" type="button"><span class="mood-face face-great" aria-hidden="true"></span><small data-i18n="great">Great</small></button>
+            <button class="mood" data-mood="good" type="button"><span class="mood-face face-good" aria-hidden="true"></span><small data-i18n="good">Good</small></button>
+            <button class="mood selected" data-mood="okay" type="button"><span class="mood-face face-okay" aria-hidden="true"></span><small data-i18n="okay">Okay</small></button>
+            <button class="mood" data-mood="low" type="button"><span class="mood-face face-low" aria-hidden="true"></span><small data-i18n="low">Low</small></button>
+            <button class="mood" data-mood="awful" type="button"><span class="mood-face face-awful" aria-hidden="true"></span><small data-i18n="awful">Awful</small></button>
           </div>
         </section>
 
@@ -98,11 +98,11 @@
         <section class="try-list">
           <h2 data-i18n="tryTitle">You might try</h2>
           <div class="try-item">
-            <span>🌿</span>
+            <span class="soft-icon leaf-icon"></span>
             <div><b data-i18n="tryWalk">Take a 5-minute walk</b><small data-i18n="tryWalkSub">Clear your mind gently.</small></div>
           </div>
           <div class="try-item">
-            <span>📘</span>
+            <span class="soft-icon journal-icon"></span>
             <div><b data-i18n="tryWrite">Write in your journal</b><small data-i18n="tryWriteSub">Name one thing you did well.</small></div>
           </div>
         </section>
@@ -166,7 +166,7 @@
 
         <section class="card day-detail">
           <h2>May 27, 2026</h2>
-          <div class="day-mood"><span>😐</span><b>Okay</b><em>›</em></div>
+          <div class="day-mood"><span class="mini-face face-okay"></span><b>Okay</b><em>›</em></div>
           <p>Took small steps and stayed consistent. Proud of you.</p>
         </section>
       </main>
@@ -197,8 +197,8 @@
         <section class="settings-section">
           <h2 data-i18n="prefs">Preferences</h2>
           <div class="settings-card">
-            <div class="row"><span>🔔 <b data-i18n="reminders">Reminders</b></span><em>09:00 PM</em><i>›</i></div>
-            <div class="row"><span>🌙 <b data-i18n="theme">Theme</b></span><em data-i18n="light">Light</em><i>›</i></div>
+            <div class="row"><span><i class="setting-emoji bell-icon"></i><b data-i18n="reminders">Reminders</b></span><em>09:00 PM</em><i>›</i></div>
+            <div class="row"><span><i class="setting-emoji moon-icon"></i><b data-i18n="theme">Theme</b></span><em data-i18n="light">Light</em><i>›</i></div>
           </div>
         </section>
 
@@ -206,13 +206,13 @@
           <h2 data-i18n="general">General</h2>
           <div class="settings-card">
             <div class="row language-row">
-              <span>🌐 <b data-i18n="language">Language</b></span>
+              <span><i class="setting-emoji globe-icon"></i><b data-i18n="language">Language</b></span>
               <div class="lang-switch">
                 <button id="enBtn" type="button">EN</button>
                 <button id="zhBtn" type="button">中文</button>
               </div>
             </div>
-            <div class="row"><span>🛡️ <b>Privacy</b></span><i>›</i></div>
+            <div class="row"><span><i class="setting-emoji shield-icon"></i><b>Privacy</b></span><i>›</i></div>
           </div>
         </section>
 
@@ -249,6 +249,6 @@
     </nav>
   </div>
 
-  <script src="./app.js?v=20"></script>
+  <script src="./app.js?v=22"></script>
 </body>
 </html>
