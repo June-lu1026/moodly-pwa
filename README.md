@@ -1,11 +1,11 @@
-# Moodly AI Competition Demo
+# Moodly Competition Edition — Today Milestone
 
-Open `index.html` directly for preview, or deploy the folder to Render/Netlify/Vercel as a static site.
+This package contains the rebuilt Today screen based on the frozen six-screen competition UI.
 
-Included:
-- High-fidelity mobile UI
-- Today, Calendar, Insights, AI Reflection, Chat, Settings
-- Mood check-in and recent records
-- Chat interaction
-- PWA manifest and service worker
-- Unified Moodly logo assets
+Open `index.html` directly, or serve the folder with any local web server.
+
+Included interactions:
+- Mood selection
+- 80-character note counter
+- Check-in saved locally
+- Navigation feedback placeholders for the next milestones
