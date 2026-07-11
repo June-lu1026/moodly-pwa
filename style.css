@@ -93,3 +93,19 @@ body{overflow-x:hidden}
 .screen{animation:none}
 .screen.active{animation:screenIn .28s cubic-bezier(.2,.8,.2,1)}
 @keyframes screenIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* v52 stable Moodly logo rendering */
+.logo,
+.small-logo,
+.msg img{
+  object-fit:contain;
+  opacity:1!important;
+  visibility:visible!important;
+  mix-blend-mode:normal!important;
+  -webkit-filter:none!important;
+  filter:none!important;
+  background:transparent!important;
+}
+.logo{width:48px!important;height:48px!important;border-radius:14px!important;box-shadow:0 10px 22px rgba(159,88,224,.24)}
+.small-logo{width:38px!important;height:38px!important;border-radius:11px!important;box-shadow:0 7px 16px rgba(159,88,224,.18)}
+.msg img{width:34px!important;height:34px!important;border-radius:10px!important;box-shadow:0 5px 12px rgba(159,88,224,.16)}

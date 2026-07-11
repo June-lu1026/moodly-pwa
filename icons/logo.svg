@@ -1,16 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Moodly logo">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#766DFF"/>
-      <stop offset="0.48" stop-color="#B565F4"/>
-      <stop offset="1" stop-color="#FF6FC6"/>
+    <linearGradient id="moodlyGradient" x1="18" y1="14" x2="112" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#756BFF"/>
+      <stop offset="0.48" stop-color="#B965F1"/>
+      <stop offset="1" stop-color="#FF68BD"/>
     </linearGradient>
-    <filter id="s" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#9D63EA" flood-opacity=".28"/></filter>
   </defs>
-  <rect x="8" y="8" width="112" height="112" rx="31" fill="url(#g)" filter="url(#s)"/>
-  <circle cx="29" cy="32" r="2" fill="#fff" opacity=".9"/>
-  <circle cx="101" cy="24" r="1.8" fill="#fff" opacity=".85"/>
-  <path d="M96 31l2.5 6.5L105 40l-6.5 2.5L96 49l-2.5-6.5L87 40l6.5-2.5z" fill="#fff" opacity=".95"/>
-  <path d="M36 78V42h13l15 22 15-22h13v36H80V60L65 81h-2L48 60v18z" fill="#fff"/>
-  <path d="M48 91c9 8 23 8 32 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  <rect x="6" y="6" width="116" height="116" rx="32" fill="url(#moodlyGradient)"/>
+  <circle cx="26" cy="31" r="2.2" fill="#FFFFFF" opacity="0.92"/>
+  <circle cx="101" cy="27" r="1.9" fill="#FFFFFF" opacity="0.88"/>
+  <path d="M99 35l2.4 6.1 6.1 2.4-6.1 2.4L99 52l-2.4-6.1-6.1-2.4 6.1-2.4z" fill="#FFFFFF"/>
+  <path d="M34 79V40h14l16 23 16-23h14v39H81V60L66 81h-4L47 60v19z" fill="#FFFFFF"/>
+  <path d="M47 93c10 8 24 8 34 0" fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round"/>
 </svg>
