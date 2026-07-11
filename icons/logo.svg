@@ -1,23 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-  <defs>
-    <linearGradient id="g" x1="20" y1="12" x2="176" y2="184" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#7D79FF"/>
-      <stop offset=".48" stop-color="#B86CF2"/>
-      <stop offset="1" stop-color="#FF73C5"/>
-    </linearGradient>
-    <radialGradient id="shine" cx="0" cy="0" r="1" gradientTransform="translate(92 42) rotate(90) scale(118)" gradientUnits="userSpaceOnUse">
-      <stop stop-color="white" stop-opacity=".32"/>
-      <stop offset="1" stop-color="white" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="s" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#A45EEB" flood-opacity=".28"/></filter>
-  </defs>
-  <rect x="10" y="10" width="172" height="172" rx="48" fill="url(#g)" filter="url(#s)"/>
-  <rect x="10" y="10" width="172" height="172" rx="48" fill="url(#shine)"/>
-  <path d="M49 118V55h22l25 36 25-36h22v63h-21V85l-26 36-26-36v33H49z" fill="white"/>
-  <path d="M72 139c14 12 34 12 48 0" fill="none" stroke="white" stroke-width="8" stroke-linecap="round"/>
-  <g fill="white">
-    <path d="m38 43 3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7z"/>
-    <path d="m149 34 2.2 5.2 5.2 2.2-5.2 2.2-2.2 5.2-2.2-5.2-5.2-2.2 5.2-2.2L149 34z" opacity=".92"/>
-    <circle cx="157" cy="75" r="3" opacity=".85"/><circle cx="34" cy="100" r="2.5" opacity=".7"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#776cff"/>
+    <stop offset="0.48" stop-color="#b56df6"/>
+    <stop offset="1" stop-color="#ff72bd"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="70%" cy="18%" r="80%"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  <filter id="s"><feDropShadow dx="0" dy="20" stdDeviation="20" flood-color="#aa65eb" flood-opacity=".28"/></filter>
+</defs>
+<rect x="24" y="24" width="464" height="464" rx="112" fill="url(#g)" filter="url(#s)"/>
+<rect x="24" y="24" width="464" height="464" rx="112" fill="url(#glow)"/>
+<path d="M145 321V159h57l54 92 54-92h57v162h-51V236l-41 67h-38l-41-67v85z" fill="#fff"/>
+<path d="M202 367c33 25 75 25 108 0" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+<g fill="#fff">
+<path d="M92 151h12v-12h8v12h12v8h-12v12h-8v-12H92z"/>
+<path d="M389 102h10V92h7v10h10v7h-10v10h-7v-10h-10z"/>
+<circle cx="104" cy="286" r="5"/><circle cx="406" cy="278" r="5"/><circle cx="364" cy="395" r="4"/><circle cx="150" cy="103" r="4"/>
+</g>
 </svg>
