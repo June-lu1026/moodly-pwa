@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: moodly-mobile-app-ui-v23
+    env: static
+    staticPublishPath: .
