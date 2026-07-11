@@ -1,17 +1,23 @@
-# Moodly Strict UI Match v22
+# Moodly Mobile App UI PWA v23
 
-This version continues matching the confirmed showcase UI and fixes the emoji issue.
+This version treats Moodly as a mobile app UI first, not a normal webpage.
 
-## v22 changes
-- Removed system emoji from mood buttons
-- Mood icons are now custom soft CSS faces
-- Settings and suggestion icons are more unified
-- Logo keeps M + smile + circular halo behind M
-- Pages are smaller, lighter, and closer to the showcase UI
-- PWA, language switch, and Gemini API entry remain
+## Core changes
+- Real mood records are saved in localStorage
+- Today saves check-ins
+- Recent records appear on Today
+- Calendar shows recorded mood by date
+- Calendar date click shows mood + note
+- Insights trend and stats are generated from records
+- Chat has typing interaction
+- Page transitions and tab feedback added
+- Mood icons use custom soft faces, not system emoji
+- Logo includes M + smile + circular halo behind M
+- PWA install support remains
+- Gemini API entry remains
 
-## Upload to GitHub
-Upload these to the repo root:
+## Upload
+Upload these files to GitHub root:
 
 icons/
 README.md
@@ -24,10 +30,15 @@ style.css
 
 Do not upload the zip file.
 
+## Gemini API
+In app.js, replace:
+
+const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
+
 ## Render
 Static Site
 Publish Directory: .
 Build Command: blank
 
-Open after deploy:
-https://moodly-pwa.onrender.com?v=22
+Open:
+https://moodly-pwa.onrender.com?v=23

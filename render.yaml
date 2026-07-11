@@ -1,5 +1,5 @@
 services:
   - type: web
-    name: moodly-final-design-match-v19
+    name: moodly-mobile-app-ui-v23
     env: static
     staticPublishPath: .

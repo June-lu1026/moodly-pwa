@@ -13,26 +13,17 @@
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div class="app-shell">
-    <div class="soft-orb orb-a"></div>
-    <div class="soft-orb orb-b"></div>
-    <div class="soft-orb orb-c"></div>
-
-    <header class="statusbar">
+  <div class="phone">
+    <header class="status">
       <strong>9:41</strong>
-      <div class="phone-icons">
-        <span class="signal"><i></i><i></i><i></i><i></i></span>
-        <span class="wifi"></span>
-        <span class="battery"><i></i></span>
-      </div>
+      <div class="sys-icons"><span class="bars"><i></i><i></i><i></i><i></i></span><span class="wifi"></span><span class="battery"><i></i></span></div>
     </header>
 
-    <section class="viewport">
-      <!-- Today -->
+    <div class="screens">
       <main class="screen active" id="today">
-        <div class="top-row split">
-          <img src="./icons/icon-192.png" class="brand-logo" alt="Moodly" />
-          <button class="calendar-icon" data-open="calendar" type="button" aria-label="Open calendar"></button>
+        <div class="top">
+          <img class="logo" src="./icons/icon-192.png" alt="Moodly" />
+          <button class="mini-cal" type="button" data-open="calendar"></button>
         </div>
 
         <section class="hero">
@@ -42,213 +33,164 @@
 
         <section class="card mood-card">
           <h2 data-i18n="moodTitle">How are you feeling?</h2>
-          <div class="moods">
-            <button class="mood" data-mood="great" type="button"><span class="mood-face face-great" aria-hidden="true"></span><small data-i18n="great">Great</small></button>
-            <button class="mood" data-mood="good" type="button"><span class="mood-face face-good" aria-hidden="true"></span><small data-i18n="good">Good</small></button>
-            <button class="mood selected" data-mood="okay" type="button"><span class="mood-face face-okay" aria-hidden="true"></span><small data-i18n="okay">Okay</small></button>
-            <button class="mood" data-mood="low" type="button"><span class="mood-face face-low" aria-hidden="true"></span><small data-i18n="low">Low</small></button>
-            <button class="mood" data-mood="awful" type="button"><span class="mood-face face-awful" aria-hidden="true"></span><small data-i18n="awful">Awful</small></button>
+          <div class="mood-grid">
+            <button class="mood" data-mood="great" type="button"><i class="face face-great"></i><span data-i18n="great">Great</span></button>
+            <button class="mood" data-mood="good" type="button"><i class="face face-good"></i><span data-i18n="good">Good</span></button>
+            <button class="mood active" data-mood="okay" type="button"><i class="face face-okay"></i><span data-i18n="okay">Okay</span></button>
+            <button class="mood" data-mood="low" type="button"><i class="face face-low"></i><span data-i18n="low">Low</span></button>
+            <button class="mood" data-mood="awful" type="button"><i class="face face-awful"></i><span data-i18n="awful">Awful</span></button>
           </div>
         </section>
 
         <section class="card note-card">
-          <div class="mini-title">
+          <div class="title-row">
             <h2 data-i18n="noteTitle">Add a quick note</h2>
-            <b data-i18n="optional">(optional)</b>
+            <em data-i18n="optional">(optional)</em>
           </div>
-          <div class="note-input">
-            <textarea id="moodNote" maxlength="80" data-i18n-placeholder="notePh" placeholder="What's on your mind?"></textarea>
-            <span><em id="charCount">0</em>/80</span>
+          <div class="note-box">
+            <textarea id="noteInput" maxlength="80" data-i18n-placeholder="notePh" placeholder="What's on your mind?"></textarea>
+            <small><b id="noteCount">0</b>/80</small>
           </div>
-          <button id="checkInBtn" class="primary-btn" type="button" data-i18n="checkIn">Check In</button>
+          <button id="checkBtn" class="primary" type="button" data-i18n="check">Check In</button>
         </section>
 
-        <section class="card daily-card">
-          <div class="daily-copy">
+        <section class="card daily">
+          <div>
             <h2 data-i18n="daily">Daily encouragement</h2>
-            <p id="dailyText">Small steps today,<br>big changes tomorrow.</p>
+            <p id="dailyCopy">Small steps today,<br>big changes tomorrow.</p>
           </div>
-          <div class="mascot">
-            <span>⌣</span>
-            <i class="star st1"></i><i class="star st2"></i><i class="star st3"></i>
-          </div>
+          <div class="blob"><span></span><i></i><i></i><i></i></div>
+        </section>
+
+        <section class="recent-wrap" id="recentWrap">
+          <h2 data-i18n="recent">Recent records</h2>
+          <div id="recentList" class="recent-list"></div>
         </section>
       </main>
 
-      <!-- Reflection -->
       <main class="screen" id="reflection">
-        <div class="top-row">
-          <img src="./icons/icon-192.png" class="brand-logo small" alt="Moodly" />
+        <div class="top with-title">
+          <img class="logo small" src="./icons/icon-192.png" alt="Moodly" />
           <h1>AI Reflection</h1>
-          <button class="sparkle" type="button">✦</button>
+          <button class="spark" type="button">✦</button>
         </div>
 
-        <section class="page-intro">
+        <section class="intro">
           <h2 data-i18n="reflectIntro">Here's your reflection<br>based on your check-ins.</h2>
         </section>
 
-        <section class="card reflection-panel">
-          <div class="reflection-copy">
-            <h2 id="reflectHeadline">You've been feeling mostly calm this week.</h2>
-            <p id="reflectBody">You're showing up for yourself, and that matters.</p>
+        <section class="card reflect-card">
+          <div>
+            <h2 id="reflectHeadline">You've been showing resilience lately.</h2>
+            <p id="reflectBody">It's okay to take things slow — you're still moving forward.</p>
           </div>
-          <div class="reflection-ghost"><span>⌣</span></div>
+          <div class="blob ghost"><span></span></div>
         </section>
 
-        <section class="try-list">
-          <h2 data-i18n="tryTitle">You might try</h2>
-          <div class="try-item">
-            <span class="soft-icon leaf-icon"></span>
-            <div><b data-i18n="tryWalk">Take a 5-minute walk</b><small data-i18n="tryWalkSub">Clear your mind gently.</small></div>
-          </div>
-          <div class="try-item">
-            <span class="soft-icon journal-icon"></span>
-            <div><b data-i18n="tryWrite">Write in your journal</b><small data-i18n="tryWriteSub">Name one thing you did well.</small></div>
-          </div>
+        <section class="suggestions">
+          <h2 data-i18n="suggestions">Suggestions for you</h2>
+          <button type="button" class="suggestion"><i class="leaf"></i><span><b data-i18n="selfCompassion">Practice self-compassion</b><small data-i18n="kindToday">Be kind to yourself today.</small></span><em>›</em></button>
+          <button type="button" class="suggestion"><i class="journal"></i><span><b data-i18n="journal">Write in your journal</b><small data-i18n="gainClarity">Reflect to gain clarity.</small></span><em>›</em></button>
         </section>
       </main>
 
-      <!-- Insights -->
       <main class="screen" id="insights">
-        <div class="top-row">
-          <img src="./icons/icon-192.png" class="brand-logo small" alt="Moodly" />
+        <div class="top with-title">
+          <img class="logo small" src="./icons/icon-192.png" alt="Moodly" />
           <h1>Insights</h1>
         </div>
 
-        <section class="section-heading">
+        <section class="section-head">
           <h2 data-i18n="weekMood">Your mood this week</h2>
         </section>
 
         <section class="card chart-card">
-          <div class="legend">
-            <span><i class="dot great"></i>Great</span>
-            <span><i class="dot good"></i>Good</span>
-            <span><i class="dot okay"></i>Okay</span>
-            <span><i class="dot low"></i>Low</span>
-            <span><i class="dot awful"></i>Awful</span>
-          </div>
-          <svg class="chart" viewBox="0 0 340 185" preserveAspectRatio="none">
-            <line x1="16" y1="54" x2="324" y2="54"></line>
-            <line x1="16" y1="98" x2="324" y2="98"></line>
-            <line x1="16" y1="142" x2="324" y2="142"></line>
-            <polyline points="16,126 62,92 108,112 154,98 198,88 240,56 284,104 324,72"></polyline>
-            <circle cx="16" cy="126" r="8"></circle><circle cx="62" cy="92" r="8"></circle><circle cx="108" cy="112" r="8"></circle><circle cx="154" cy="98" r="8"></circle><circle cx="198" cy="88" r="8"></circle><circle cx="240" cy="56" r="8"></circle><circle cx="284" cy="104" r="8"></circle><circle cx="324" cy="72" r="8"></circle>
-          </svg>
-          <div class="week-days"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+          <div class="legend"><span><i class="lg great"></i>Great</span><span><i class="lg good"></i>Good</span><span><i class="lg okay"></i>Okay</span><span><i class="lg low"></i>Low</span><span><i class="lg awful"></i>Awful</span></div>
+          <svg class="chart" viewBox="0 0 320 160" preserveAspectRatio="none" id="trendChart"></svg>
+          <div class="week-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
         </section>
 
-        <section class="card ai-summary">
+        <section class="card summary-card">
           <h2>AI Summary</h2>
-          <p id="summaryText">You had a mix of ups and downs, but you're trending positively. Keep going! 💜</p>
+          <p id="insightSummary">Your mood will appear here after check-ins.</p>
+        </section>
+
+        <section class="card stats-card">
+          <h2 data-i18n="recordStats">Record stats</h2>
+          <div class="stats"><span><b id="statTotal">0</b><small data-i18n="total">Total</small></span><span><b id="statStreak">0</b><small data-i18n="streak">Streak</small></span><span><b id="statTop">—</b><small data-i18n="most">Most</small></span></div>
         </section>
       </main>
 
-      <!-- Calendar -->
       <main class="screen" id="calendar">
-        <div class="top-row">
-          <img src="./icons/icon-192.png" class="brand-logo small" alt="Moodly" />
+        <div class="top with-title">
+          <img class="logo small" src="./icons/icon-192.png" alt="Moodly" />
           <h1>Calendar</h1>
         </div>
 
-        <div class="calendar-title">
-          <h2>May 2026</h2>
-          <div><button type="button">‹</button><button type="button">›</button></div>
-        </div>
-
-        <section class="calendar-grid">
-          <b>Mon</b><b>Tue</b><b>Wed</b><b>Thu</b><b>Fri</b><b>Sat</b><b>Sun</b>
-          <span></span><span></span><span></span><i>1</i><i>2</i><i>3</i><i>4</i>
-          <i>5</i><i class="has-dot">6</i><i>7</i><i>8</i><i>9</i><i>10</i><i>11</i>
-          <i>12</i><i>13</i><i class="purple-day">14</i><i>15</i><i>16</i><i>17</i><i>18</i>
-          <i>19</i><i class="orange-day">20</i><i>21</i><i>22</i><i>23</i><i>24</i><i>25</i>
-          <i>26</i><i class="blue-day">27</i><i>28</i><i>29</i><i>30</i><i>31</i><span></span>
+        <section class="month-row">
+          <h2 id="monthTitle">May 2026</h2>
+          <div><button id="prevMonth" type="button">‹</button><button id="nextMonth" type="button">›</button></div>
         </section>
 
-        <section class="card day-detail">
-          <h2>May 27, 2026</h2>
-          <div class="day-mood"><span class="mini-face face-okay"></span><b>Okay</b><em>›</em></div>
-          <p>Took small steps and stayed consistent. Proud of you.</p>
+        <section class="calendar-grid" id="calendarGrid"></section>
+
+        <section class="card day-card">
+          <h2 id="selectedDateTitle">Today</h2>
+          <div class="day-mood"><i id="selectedMoodFace" class="face face-okay"></i><b id="selectedMoodLabel">No record</b><em>›</em></div>
+          <p id="selectedNote">Your check-in will appear here.</p>
         </section>
       </main>
 
-      <!-- Chat -->
       <main class="screen chat-screen" id="chat">
-        <div class="top-row">
-          <img src="./icons/icon-192.png" class="brand-logo small" alt="Moodly" />
+        <div class="top with-title">
+          <img class="logo small" src="./icons/icon-192.png" alt="Moodly" />
           <h1 data-i18n="chatTitle">Chat with Moodly</h1>
-          <button class="more-btn" type="button">•••</button>
+          <button class="more" type="button">•••</button>
         </div>
-
         <section id="chatList" class="chat-list">
-          <div class="bubble bot" data-i18n="chatHi">Hi Alex, how are you feeling today?</div>
-          <div class="bubble user">A bit overwhelmed with work.</div>
-          <div class="bubble bot" data-i18n="chatReply">That's understandable. Want to talk through what's on your mind?</div>
-          <div class="typing"><i></i><i></i><i></i></div>
+          <div class="bubble bot" data-i18n="chatHi">Hi, I'm here to listen and support you. How are you feeling today?</div>
         </section>
       </main>
 
-      <!-- Settings -->
       <main class="screen" id="settings">
-        <div class="top-row">
-          <img src="./icons/icon-192.png" class="brand-logo small" alt="Moodly" />
+        <div class="top with-title">
+          <img class="logo small" src="./icons/icon-192.png" alt="Moodly" />
           <h1>Settings</h1>
         </div>
 
         <section class="settings-section">
           <h2 data-i18n="prefs">Preferences</h2>
           <div class="settings-card">
-            <div class="row"><span><i class="setting-emoji bell-icon"></i><b data-i18n="reminders">Reminders</b></span><em>09:00 PM</em><i>›</i></div>
-            <div class="row"><span><i class="setting-emoji moon-icon"></i><b data-i18n="theme">Theme</b></span><em data-i18n="light">Light</em><i>›</i></div>
+            <div class="setting-row"><span><i class="bell"></i><b data-i18n="reminders">Reminders</b></span><em>09:00 PM</em><strong>›</strong></div>
+            <div class="setting-row"><span><i class="moon"></i><b data-i18n="theme">Theme</b></span><em data-i18n="light">Light</em><strong>›</strong></div>
           </div>
         </section>
 
         <section class="settings-section">
           <h2 data-i18n="general">General</h2>
           <div class="settings-card">
-            <div class="row language-row">
-              <span><i class="setting-emoji globe-icon"></i><b data-i18n="language">Language</b></span>
-              <div class="lang-switch">
-                <button id="enBtn" type="button">EN</button>
-                <button id="zhBtn" type="button">中文</button>
-              </div>
-            </div>
-            <div class="row"><span><i class="setting-emoji shield-icon"></i><b>Privacy</b></span><i>›</i></div>
+            <div class="setting-row lang-row"><span><i class="globe"></i><b data-i18n="language">Language</b></span><div class="lang"><button id="enBtn" type="button">EN</button><button id="zhBtn" type="button">中文</button></div></div>
+            <div class="setting-row"><span><i class="shield"></i><b>Privacy</b></span><strong>›</strong></div>
           </div>
         </section>
 
-        <button id="deleteBtn" class="delete-btn" type="button" data-i18n="delete">Delete All Data</button>
+        <button class="delete" id="deleteBtn" type="button" data-i18n="delete">Delete All Data</button>
       </main>
-    </section>
+    </div>
 
-    <section id="messageBar" class="message-bar">
-      <input id="chatInput" data-i18n-placeholder="messagePh" placeholder="Type a message..." />
+    <section class="messagebar" id="messagebar">
+      <input id="chatInput" data-i18n-placeholder="msgPh" placeholder="Type a message..." />
       <button id="sendBtn" type="button">➤</button>
     </section>
 
     <nav class="tabbar">
-      <button class="active" data-screen="today" type="button">
-        <svg viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V21h-5.7v-5.8H9.2V21H3.5z"/></svg>
-        <span>Today</span>
-      </button>
-      <button data-screen="calendar" type="button">
-        <svg viewBox="0 0 24 24"><path d="M5 4h14v17H5zM8 2.5v5M16 2.5v5M5 9h14"/></svg>
-        <span>Calendar</span>
-      </button>
-      <button data-screen="insights" type="button">
-        <svg viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>
-        <span>Insights</span>
-      </button>
-      <button data-screen="chat" type="button">
-        <svg viewBox="0 0 24 24"><path d="M4 5.5h16v11H8l-4 4z"/></svg>
-        <span>Chat</span>
-      </button>
-      <button data-screen="settings" type="button">
-        <svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM4 12h3M17 12h3M12 4v3M12 17v3"/></svg>
-        <span>Settings</span>
-      </button>
+      <button class="active" data-screen="today" type="button"><svg viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V21h-5.7v-5.8H9.2V21H3.5z"/></svg><span>Today</span></button>
+      <button data-screen="calendar" type="button"><svg viewBox="0 0 24 24"><path d="M5 4h14v17H5zM8 2.5v5M16 2.5v5M5 9h14"/></svg><span>Calendar</span></button>
+      <button data-screen="insights" type="button"><svg viewBox="0 0 24 24"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span>Insights</span></button>
+      <button data-screen="chat" type="button"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v11H8l-4 4z"/></svg><span>Chat</span></button>
+      <button data-screen="settings" type="button"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM4 12h3M17 12h3M12 4v3M12 17v3"/></svg><span>Settings</span></button>
     </nav>
   </div>
-
-  <script src="./app.js?v=22"></script>
+  <script src="./app.js?v=23"></script>
 </body>
 </html>
