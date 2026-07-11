@@ -1,23 +1,11 @@
-# Moodly AI PWA V30
+# Moodly AI Competition Demo
 
-A complete mobile-first rebuild based on the approved Moodly AI reference UI.
+Open `index.html` directly for preview, or deploy the folder to Render/Netlify/Vercel as a static site.
 
-## Run locally
-Use any local web server, for example:
-
-```bash
-python -m http.server 8080
-```
-
-Open `http://localhost:8080`.
-
-## Included
-- Today check-in page
-- Mood selection and note input
-- Local mood history
-- Calendar record view
-- Insights chart
-- AI reflection screen
+Included:
+- High-fidelity mobile UI
+- Today, Calendar, Insights, AI Reflection, Chat, Settings
+- Mood check-in and recent records
 - Chat interaction
-- Settings and bilingual EN/中文 switch
 - PWA manifest and service worker
+- Unified Moodly logo assets
