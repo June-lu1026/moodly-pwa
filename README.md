@@ -1,11 +1,14 @@
-# Moodly Competition Edition — Today Milestone
+Moodly Competition Edition V2
 
-This package contains the rebuilt Today screen based on the frozen six-screen competition UI.
+Completed screens:
+- Today
+- AI Reflection
 
-Open `index.html` directly, or serve the folder with any local web server.
+Demo flow:
+1. Select a mood on Today.
+2. Add an optional note.
+3. Press Check In.
+4. The app saves the check-in locally and opens a personalized AI Reflection.
+5. Use the back button to return to Today.
 
-Included interactions:
-- Mood selection
-- 80-character note counter
-- Check-in saved locally
-- Navigation feedback placeholders for the next milestones
+Open index.html in a modern browser.

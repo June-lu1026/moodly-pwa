@@ -9,7 +9,7 @@
 </head>
 <body>
   <main class="stage">
-    <section class="phone" aria-label="Moodly Today screen">
+    <section class="phone" aria-label="Moodly Competition Edition">
       <div class="statusbar" aria-hidden="true">
         <strong>9:41</strong>
         <div class="status-icons">
@@ -21,6 +21,7 @@
 
       <div class="corner-glow" aria-hidden="true"></div>
 
+      <div class="screen active" id="todayScreen">
       <div class="content">
         <header class="topbar">
           <img class="brand-logo" src="assets/logo.png" alt="Moodly" />
@@ -65,6 +66,50 @@
           <div class="encouragement-copy"><small>Daily encouragement</small><p>Small steps today,<br />big changes tomorrow.</p></div>
           <div class="character" aria-hidden="true"><i class="shine"></i><i class="eye left"></i><i class="eye right"></i><i class="smile"></i><b>♥</b></div>
         </button>
+      </div>
+      </div>
+
+      <div class="screen" id="reflectionScreen">
+        <div class="content reflection-content">
+          <header class="topbar reflection-topbar">
+            <button class="back-button" id="reflectionBack" aria-label="Back to Today">
+              <svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <div class="reflection-heading"><span>AI Reflection</span><small>Your gentle daily insight</small></div>
+            <img class="brand-logo mini-logo" src="assets/logo.png" alt="Moodly" />
+          </header>
+
+          <section class="reflection-hero">
+            <div class="ai-orb" aria-hidden="true"><i></i><b></b><span>✦</span></div>
+            <p class="eyebrow">Today’s reflection</p>
+            <h1 id="reflectionTitle">You’re doing better than you think.</h1>
+            <p id="reflectionText">Not every day needs to feel perfect. Showing up, noticing how you feel, and giving yourself space already counts as progress.</p>
+          </section>
+
+          <section class="reflection-card primary-reflection">
+            <div class="reflection-icon">✦</div>
+            <div><small>What Moodly noticed</small><p id="noticedText">Your mood is steady today. A calm evening routine could help you protect that balance.</p></div>
+          </section>
+
+          <section class="suggestion-block">
+            <div class="section-heading"><h2>Gentle suggestions</h2><span>3 ideas</span></div>
+            <button class="suggestion-card">
+              <span class="suggestion-icon lavender"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></span>
+              <span><strong>Take one slow breath</strong><small>Pause for 30 seconds and relax your shoulders.</small></span>
+              <svg class="chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+            <button class="suggestion-card">
+              <span class="suggestion-icon blue-soft"><svg viewBox="0 0 24 24"><path d="M5 5h14v14H5zM8 9h8M8 13h6"/></svg></span>
+              <span><strong>Write one kind sentence</strong><small>Say something supportive to your future self.</small></span>
+              <svg class="chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+            <button class="suggestion-card">
+              <span class="suggestion-icon pink-soft"><svg viewBox="0 0 24 24"><path d="M8 12h8M12 8v8"/><circle cx="12" cy="12" r="8"/></svg></span>
+              <span><strong>Choose one small win</strong><small>Pick a simple task you can finish in five minutes.</small></span>
+              <svg class="chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </section>
+        </div>
       </div>
 
       <nav class="tabbar" aria-label="Main navigation">
