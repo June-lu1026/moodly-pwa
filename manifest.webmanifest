@@ -1,1 +1,9 @@
-{"name":"Moodly AI","short_name":"Moodly","start_url":"./","display":"standalone","background_color":"#faf8ff","theme_color":"#faf8ff","icons":[{"src":"icons/icon-192.png","sizes":"192x192","type":"image/png"},{"src":"icons/icon-512.png","sizes":"512x512","type":"image/png"}]}
+{
+  "name":"Moodly AI Competition Edition",
+  "short_name":"Moodly",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#fbfbff",
+  "theme_color":"#7656ff",
+  "icons":[{"src":"assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

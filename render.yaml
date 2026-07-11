@@ -1,5 +1,13 @@
 services:
   - type: web
-    name: moodly-mobile-app-ui-v23
-    env: static
-    staticPublishPath: .
+    name: moodly-pwa
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
